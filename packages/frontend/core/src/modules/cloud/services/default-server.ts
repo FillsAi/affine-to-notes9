@@ -10,8 +10,8 @@ export class DefaultServerService extends Service {
   constructor(private readonly serversService: ServersService) {
     super();
 
-    // global server is always affine-cloud
-    const server = this.serversService.server$('affine-cloud').value;
+    // global server is always local-server for air-gap deployment
+    const server = this.serversService.server$('local-server').value;
     if (!server) {
       throw new Error('No server found');
     }

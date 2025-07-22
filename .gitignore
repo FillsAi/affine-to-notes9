@@ -88,3 +88,19 @@ af.cmd
 
 # playwright
 storageState.json
+
+# Air-gap deployment specific
+.env.local
+docker-compose.override.yml
+/logs/
+/backups/
+*.log
+postgres_data/
+manticoresearch_data/
+redis_data/
+
+# Local development
+.local/
+temp/
+*.temp
+*.tmp

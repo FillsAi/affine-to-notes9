@@ -1,49 +1,16 @@
-import * as Sentry from '@sentry/react';
-import { useEffect } from 'react';
-import {
-  createRoutesFromChildren,
-  matchRoutes,
-  useLocation,
-  useNavigationType,
-} from 'react-router-dom';
+import React from 'react';
 
+// Sentry completely disabled for air-gap deployment
 function createSentry() {
-  let client: Sentry.BrowserClient | undefined;
   const wrapped = {
     init() {
-      if (!globalThis.SENTRY_RELEASE) {
-        // https://docs.sentry.io/platforms/javascript/guides/react/#configure
-        client = Sentry.init({
-          dsn: BUILD_CONFIG.SENTRY_DSN,
-          debug: BUILD_CONFIG.debug ?? false,
-          environment: BUILD_CONFIG.appBuildType,
-          integrations: [
-            Sentry.reactRouterV6BrowserTracingIntegration({
-              useEffect,
-              useLocation,
-              useNavigationType,
-              createRoutesFromChildren,
-              matchRoutes,
-            }),
-          ],
-        }) as Sentry.BrowserClient;
-
-        Sentry.setTags({
-          distribution: BUILD_CONFIG.distribution,
-          appVersion: BUILD_CONFIG.appVersion,
-          editorVersion: BUILD_CONFIG.editorVersion,
-        });
-      }
+      console.log('Sentry disabled for local deployment');
     },
     enable() {
-      if (client) {
-        client.getOptions().enabled = true;
-      }
+      console.log('Sentry remains disabled');
     },
     disable() {
-      if (client) {
-        client.getOptions().enabled = false;
-      }
+      console.log('Sentry disabled');
     },
   };
 
@@ -51,3 +18,8 @@ function createSentry() {
 }
 
 export const sentry = createSentry();
+export const SentryErrorBoundary = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => children;

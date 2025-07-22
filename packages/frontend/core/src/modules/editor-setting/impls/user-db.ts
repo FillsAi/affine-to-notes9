@@ -19,11 +19,11 @@ export class CurrentUserDBEditorSettingProvider
   ) {
     super();
 
-    const affineCloudServer = this.serversService.server$('affine-cloud').value; // TODO: support multiple servers
-    if (!affineCloudServer) {
-      throw new Error('affine-cloud server not found');
+    const localServer = this.serversService.server$('local-server').value; // Air-gap deployment uses local server
+    if (!localServer) {
+      throw new Error('local-server not found');
     }
-    const userDBService = affineCloudServer.scope.get(UserDBService);
+    const userDBService = localServer.scope.get(UserDBService);
     this.currentUserDB$ = userDBService.currentUserDB.db$;
   }
 
