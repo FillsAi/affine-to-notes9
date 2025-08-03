@@ -6,13 +6,15 @@ function createMixpanel() {
     },
   };
 
-  const mixpanel = new Proxy({}, noOpHandler);
+  // Air-gap deployment: Create proxy for disabled mixpanel
+  new Proxy({}, noOpHandler);
 
   const wrapped = {
     init() {
       console.log('Mixpanel disabled for local deployment');
     },
     track: () => {},
+    track_pageview: () => {},
     identify: () => {},
     register: () => {},
     reset: () => {},

@@ -44,7 +44,7 @@ export const useEnableCloud = () => {
         const { id: newId } = await workspacesService.transformLocalToCloud(
           ws,
           account.id,
-          'affine-cloud'
+          'local-server'
         );
         jumpToPage(newId, options?.openPageId || 'all');
         options?.onSuccess?.();

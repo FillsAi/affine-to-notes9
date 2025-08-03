@@ -12,10 +12,10 @@ import {
 type Channel = 'stable' | 'canary' | 'beta' | 'internal';
 
 const appNames = {
-  stable: 'AFFiNE',
-  canary: 'AFFiNE Canary',
-  beta: 'AFFiNE Beta',
-  internal: 'AFFiNE Internal',
+  stable: 'notes9',
+  canary: 'notes9 Canary',
+  beta: 'notes9 Beta',
+  internal: 'notes9 Internal',
 } satisfies Record<Channel, string>;
 const appName = appNames[BUILD_CONFIG.appBuildType];
 

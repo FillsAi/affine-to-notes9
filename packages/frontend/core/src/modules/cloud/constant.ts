@@ -1,8 +1,4 @@
-import {
-  OAuthProviderType,
-  ServerDeploymentType,
-  ServerFeature,
-} from '@affine/graphql';
+import { ServerDeploymentType, ServerFeature } from '@affine/graphql';
 
 import type { ServerConfig, ServerMetadata } from './types';
 
@@ -12,7 +8,7 @@ export const BUILD_IN_SERVERS: (ServerMetadata & { config: ServerConfig })[] = [
     id: 'local-server',
     baseUrl: 'http://localhost:3010', // Only local server
     config: {
-      serverName: 'Local AFFiNE Server',
+      serverName: 'Local notes9 Server',
       features: [
         ServerFeature.LocalWorkspace,
         // Remove cloud features

@@ -75,7 +75,11 @@ export const Component = ({
     if (createOnceRef.current) return;
     createOnceRef.current = true;
     // TODO: support selfhosted
-    buildShowcaseWorkspace(workspacesService, 'affine-cloud', 'AFFiNE Cloud')
+    buildShowcaseWorkspace(
+      workspacesService,
+      'local-server',
+      'Local AFFiNE Server'
+    )
       .then(({ meta, defaultDocId }) => {
         if (defaultDocId) {
           jumpToPage(meta.id, defaultDocId);
@@ -104,14 +108,14 @@ export const Component = ({
     // check is user logged in && has cloud workspace
     if (searchParams.get('initCloud') === 'true') {
       if (loggedIn) {
-        if (list.every(w => w.flavour !== 'affine-cloud')) {
+        if (list.every(w => w.flavour !== 'local-server')) {
           createCloudWorkspace();
           return;
         }
 
         // open first cloud workspace
         const openWorkspace =
-          list.find(w => w.flavour === 'affine-cloud') ?? list[0];
+          list.find(w => w.flavour === 'local-server') ?? list[0];
         openPage(openWorkspace.id, defaultIndexRoute);
       } else {
         return;

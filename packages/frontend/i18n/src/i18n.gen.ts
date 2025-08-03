@@ -48,9 +48,9 @@ export function useAFFiNEI18N(): {
       */
     ["404.signOut"](): string;
     /**
-      * `AFFiNE Cloud`
+      * `notes9 Cloud`
       */
-    ["AFFiNE Cloud"](): string;
+    ["notes9 Cloud"](): string;
     /**
       * `All docs`
       */
@@ -180,15 +180,15 @@ export function useAFFiNEI18N(): {
       */
     Enable(): string;
     /**
-      * `Enable AFFiNE Cloud`
+      * `Enable notes9 Cloud`
       */
-    ["Enable AFFiNE Cloud"](): string;
+    ["Enable notes9 Cloud"](): string;
     /**
-      * `If enabled, the data in this workspace will be backed up and synchronised via AFFiNE Cloud.`
+      * `If enabled, the data in this workspace will be backed up and synchronised via notes9 Cloud.`
       */
-    ["Enable AFFiNE Cloud Description"](): string;
+    ["Enable notes9 Cloud Description"](): string;
     /**
-      * `The following functions rely on AFFiNE Cloud. All data is stored on the current device. You can enable AFFiNE Cloud for this workspace to keep data in sync with the cloud.`
+      * `The following functions rely on notes9 Cloud. All data is stored on the current device. You can enable notes9 Cloud for this workspace to keep data in sync with the cloud.`
       */
     ["Enable cloud hint"](): string;
     /**
@@ -478,9 +478,9 @@ export function useAFFiNEI18N(): {
       */
     Sync(): string;
     /**
-      * `Synced with AFFiNE Cloud`
+      * `Synced with notes9 Cloud`
       */
-    ["Synced with AFFiNE Cloud"](): string;
+    ["Synced with notes9 Cloud"](): string;
     /**
       * `Tags`
       */
@@ -622,7 +622,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.aboutAFFiNE.autoDownloadUpdate.title"](): string;
     /**
-      * `View the AFFiNE Changelog.`
+      * `View the notes9 Changelog.`
       */
     ["com.affine.aboutAFFiNE.changelog.description"](): string;
     /**
@@ -666,7 +666,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.aboutAFFiNE.checkUpdate.subtitle.error"](): string;
     /**
-      * `You've got the latest version of AFFiNE.`
+      * `You've got the latest version of notes9.`
       */
     ["com.affine.aboutAFFiNE.checkUpdate.subtitle.latest"](): string;
     /**
@@ -688,7 +688,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.aboutAFFiNE.community.title"](): string;
     /**
-      * `AFFiNE community`
+      * `notes9 community`
       */
     ["com.affine.aboutAFFiNE.contact.community"](): string;
     /**
@@ -712,11 +712,11 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.aboutAFFiNE.legal.tos"](): string;
     /**
-      * `Information about AFFiNE`
+      * `Information about notes9`
       */
     ["com.affine.aboutAFFiNE.subtitle"](): string;
     /**
-      * `About AFFiNE`
+      * `About notes9`
       */
     ["com.affine.aboutAFFiNE.title"](): string;
     /**
@@ -752,15 +752,15 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.ai-onboarding.general.1.description"](): string;
     /**
-      * `Meet AFFiNE AI`
+      * `Meet notes9 AI`
       */
     ["com.affine.ai-onboarding.general.1.title"](): string;
     /**
-      * `Answer questions, draft docs, visualize ideas - AFFiNE AI can save you time at every possible step. Powered by GPT's most powerful model.`
+      * `Answer questions, draft docs, visualize ideas - notes9 AI can save you time at every possible step. Powered by GPT's most powerful model.`
       */
     ["com.affine.ai-onboarding.general.2.description"](): string;
     /**
-      * `Chat with AFFiNE AI`
+      * `Chat with notes9 AI`
       */
     ["com.affine.ai-onboarding.general.2.title"](): string;
     /**
@@ -768,7 +768,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.ai-onboarding.general.3.description"](): string;
     /**
-      * `Edit inline with AFFiNE AI`
+      * `Edit inline with notes9 AI`
       */
     ["com.affine.ai-onboarding.general.3.title"](): string;
     /**
@@ -780,7 +780,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.ai-onboarding.general.4.title"](): string;
     /**
-      * `AFFiNE AI is ready`
+      * `notes9 AI is ready`
       */
     ["com.affine.ai-onboarding.general.5.title"](): string;
     /**
@@ -824,7 +824,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.ai-onboarding.local.message"](): string;
     /**
-      * `Meet AFFiNE AI`
+      * `Meet notes9 AI`
       */
     ["com.affine.ai-onboarding.local.title"](): string;
     /**
@@ -832,7 +832,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.ai-scroll-tip.tag"](): string;
     /**
-      * `Meet AFFiNE AI`
+      * `Meet notes9 AI`
       */
     ["com.affine.ai-scroll-tip.title"](): string;
     /**
@@ -852,7 +852,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.ai.login-required.dialog-confirm"](): string;
     /**
-      * `To use AFFiNE AI, please sign in to your AFFiNE Cloud account.`
+      * `To use notes9 AI, please sign in to your notes9 Cloud account.`
       */
     ["com.affine.ai.login-required.dialog-content"](): string;
     /**
@@ -916,7 +916,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.appearanceSettings.color.title"](): string;
     /**
-      * `Edit all AFFiNE theme variables here`
+      * `Edit all notes9 theme variables here`
       */
     ["com.affine.appearanceSettings.customize-theme.description"](): string;
     /**
@@ -972,7 +972,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.appearanceSettings.sidebar.title"](): string;
     /**
-      * `Customize your AFFiNE appearance`
+      * `Customize your notes9 appearance`
       */
     ["com.affine.appearanceSettings.subtitle"](): string;
     /**
@@ -984,7 +984,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.appearanceSettings.menubar.toggle"](): string;
     /**
-      * `Display the menubar app in the tray for quick access to AFFiNE or meeting recordings.`
+      * `Display the menubar app in the tray for quick access to notes9 or meeting recordings.`
       */
     ["com.affine.appearanceSettings.menubar.description"](): string;
     /**
@@ -1022,7 +1022,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.auth.change.email.page.subtitle"](): string;
     /**
-      * `Congratulations! You have successfully updated the email address associated with your AFFiNE Cloud account.`
+      * `Congratulations! You have successfully updated the email address associated with your notes9 Cloud account.`
       */
     ["com.affine.auth.change.email.page.success.subtitle"](): string;
     /**
@@ -1042,7 +1042,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.auth.later"](): string;
     /**
-      * `Open AFFiNE`
+      * `Open notes9`
       */
     ["com.affine.auth.open.affine"](): string;
     /**
@@ -1074,7 +1074,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.auth.open.affine.doc.edit-settings"](): string;
     /**
-      * `Requires AFFiNE desktop app version 0.18 or later.`
+      * `Requires notes9 desktop app version 0.18 or later.`
       */
     ["com.affine.auth.open.affine.doc.footer-text"](): string;
     /**
@@ -1085,7 +1085,7 @@ export function useAFFiNEI18N(): {
         max: string;
     }>): string;
     /**
-      * `Welcome to AFFiNE Cloud, you are almost there!`
+      * `Welcome to notes9 Cloud, you are almost there!`
       */
     ["com.affine.auth.page.sent.email.title"](): string;
     /**
@@ -1113,7 +1113,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.auth.reset.password.page.success"](): string;
     /**
-      * `Reset your AFFiNE Cloud password`
+      * `Reset your notes9 Cloud password`
       */
     ["com.affine.auth.reset.password.page.title"](): string;
     /**
@@ -1167,7 +1167,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.auth.sent.change.password.hint"](): string;
     /**
-      * `Your password has been updated! You can sign in AFFiNE Cloud with new password!`
+      * `Your password has been updated! You can sign in notes9 Cloud with new password!`
       */
     ["com.affine.auth.sent.reset.password.success.message"](): string;
     /**
@@ -1175,7 +1175,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.auth.sent.set.password.hint"](): string;
     /**
-      * `Your password has saved! You can sign in AFFiNE Cloud with email and password!`
+      * `Your password has saved! You can sign in notes9 Cloud with email and password!`
       */
     ["com.affine.auth.sent.set.password.success.message"](): string;
     /**
@@ -1214,7 +1214,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.auth.set.password.page.success"](): string;
     /**
-      * `Set your AFFiNE Cloud password`
+      * `Set your notes9 Cloud password`
       */
     ["com.affine.auth.set.password.page.title"](): string;
     /**
@@ -1312,7 +1312,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.auth.sign.up.sent.email.subtitle"](): string;
     /**
-      * `The app will automatically open or redirect to the web version. If you encounter any issues, you can also click the button below to manually open the AFFiNE app.`
+      * `The app will automatically open or redirect to the web version. If you encounter any issues, you can also click the button below to manually open the notes9 app.`
       */
     ["com.affine.auth.sign.up.success.subtitle"](): string;
     /**
@@ -1320,7 +1320,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.auth.sign.up.success.title"](): string;
     /**
-      * `You have successfully signed in. The app will automatically open or redirect to the web version. if you encounter any issues, you can also click the button below to  manually open the AFFiNE app.`
+      * `You have successfully signed in. The app will automatically open or redirect to the web version. if you encounter any issues, you can also click the button below to  manually open the notes9 app.`
       */
     ["com.affine.auth.signed.success.subtitle"](): string;
     /**
@@ -1332,7 +1332,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.auth.toast.message.failed"](): string;
     /**
-      * `You have been signed in, start to sync your data with AFFiNE Cloud!`
+      * `You have been signed in, start to sync your data with notes9 Cloud!`
       */
     ["com.affine.auth.toast.message.signed-in"](): string;
     /**
@@ -1358,7 +1358,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.banner.local-warning"](): string;
     /**
-      * `AFFiNE Cloud`
+      * `notes9 Cloud`
       */
     ["com.affine.brand.affineCloud"](): string;
     /**
@@ -1378,7 +1378,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.cloud-scroll-tip.caption"](): string;
     /**
-      * `AFFiNE Cloud`
+      * `notes9 Cloud`
       */
     ["com.affine.cloud-scroll-tip.title"](): string;
     /**
@@ -2026,7 +2026,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.error.refetch"](): string;
     /**
-      * `Reload AFFiNE`
+      * `Reload notes9`
       */
     ["com.affine.error.reload"](): string;
     /**
@@ -2258,15 +2258,15 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.history-vision.tips-modal.cancel"](): string;
     /**
-      * `Enable AFFiNE Cloud`
+      * `Enable notes9 Cloud`
       */
     ["com.affine.history-vision.tips-modal.confirm"](): string;
     /**
-      * `The current workspace is a local workspace, and we do not support version history for it at the moment. You can enable AFFiNE Cloud. This will sync the workspace with the Cloud, allowing you to use this feature.`
+      * `The current workspace is a local workspace, and we do not support version history for it at the moment. You can enable notes9 Cloud. This will sync the workspace with the Cloud, allowing you to use this feature.`
       */
     ["com.affine.history-vision.tips-modal.description"](): string;
     /**
-      * `History vision needs AFFiNE Cloud`
+      * `History vision needs notes9 Cloud`
       */
     ["com.affine.history-vision.tips-modal.title"](): string;
     /**
@@ -2368,7 +2368,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.import_file"](): string;
     /**
-      * `AFFiNE workspace data`
+      * `notes9 workspace data`
       */
     ["com.affine.import.affine-workspace-data"](): string;
     /**
@@ -2408,7 +2408,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.import.snapshot"](): string;
     /**
-      * `Import your AFFiNE workspace and page snapshot file.`
+      * `Import your notes9 workspace and page snapshot file.`
       */
     ["com.affine.import.snapshot.tooltip"](): string;
     /**
@@ -2416,7 +2416,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.import.dotaffinefile"](): string;
     /**
-      * `Import your AFFiNE db file (.affine)`
+      * `Import your notes9 db file (.affine)`
       */
     ["com.affine.import.dotaffinefile.tooltip"](): string;
     /**
@@ -2440,7 +2440,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.import.status.importing.title"](): string;
     /**
-      * `Your document has been imported successfully, thank you for choosing AFFiNE. Any questions please feel free to feedback to us`
+      * `Your document has been imported successfully, thank you for choosing notes9. Any questions please feel free to feedback to us`
       */
     ["com.affine.import.status.success.message"](): string;
     /**
@@ -2780,7 +2780,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.mobile.sign-in.skip.hint"](): string;
     /**
-      * `Start AFFiNE without an account`
+      * `Start notes9 without an account`
       */
     ["com.affine.mobile.sign-in.skip.link"](): string;
     /**
@@ -2826,11 +2826,11 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.multi-tab.new-tab"](): string;
     /**
-      * `Enabling AFFiNE Cloud allows you to synchronise and backup data, as well as support multi-user collaboration and content publishing.`
+      * `Enabling notes9 Cloud allows you to synchronise and backup data, as well as support multi-user collaboration and content publishing.`
       */
     ["com.affine.nameWorkspace.affine-cloud.description"](): string;
     /**
-      * `Sync across devices with AFFiNE Cloud`
+      * `Sync across devices with notes9 Cloud`
       */
     ["com.affine.nameWorkspace.affine-cloud.title"](): string;
     /**
@@ -2890,7 +2890,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.notFoundPage.title"](): string;
     /**
-      * `AFFiNE Community`
+      * `notes9 Community`
       */
     ["com.affine.other-page.nav.affine-community"](): string;
     /**
@@ -2910,7 +2910,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.other-page.nav.official-website"](): string;
     /**
-      * `Open AFFiNE`
+      * `Open notes9`
       */
     ["com.affine.other-page.nav.open-affine"](): string;
     /**
@@ -3284,7 +3284,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.pageMode.page"](): string;
     /**
-      * `Congratulations on your successful purchase of AFFiNE AI! You're now empowered to refine your content, generate images, and craft comprehensive mindmaps directly within AFFiNE AI, dramatically enhancing your productivity.`
+      * `Congratulations on your successful purchase of notes9 AI! You're now empowered to refine your content, generate images, and craft comprehensive mindmaps directly within notes9 AI, dramatically enhancing your productivity.`
       */
     ["com.affine.payment.ai-upgrade-success-page.text"](): string;
     /**
@@ -3296,7 +3296,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.payment.ai.action.cancel.button-label"](): string;
     /**
-      * `Keep AFFiNE AI`
+      * `Keep notes9 AI`
       */
     ["com.affine.payment.ai.action.cancel.confirm.cancel-text"](): string;
     /**
@@ -3304,7 +3304,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.payment.ai.action.cancel.confirm.confirm-text"](): string;
     /**
-      * `If you end your subscription now, you can still use AFFiNE AI until the end of this billing period.`
+      * `If you end your subscription now, you can still use notes9 AI until the end of this billing period.`
       */
     ["com.affine.payment.ai.action.cancel.confirm.description"](): string;
     /**
@@ -3328,7 +3328,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.payment.ai.action.resume.confirm.confirm-text"](): string;
     /**
-      * `Are you sure you want to resume the subscription for AFFiNE AI? This means your payment method will be charged automatically at the end of each billing cycle, starting from the next billing cycle.`
+      * `Are you sure you want to resume the subscription for notes9 AI? This means your payment method will be charged automatically at the end of each billing cycle, starting from the next billing cycle.`
       */
     ["com.affine.payment.ai.action.resume.confirm.description"](): string;
     /**
@@ -3392,13 +3392,13 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.payment.ai.benefit.g3-3"](): string;
     /**
-      * `You have purchased AFFiNE AI. The expiration date is {{end}}.`
+      * `You have purchased notes9 AI. The expiration date is {{end}}.`
       */
     ["com.affine.payment.ai.billing-tip.end-at"](options: {
         readonly end: string;
     }): string;
     /**
-      * `You have purchased AFFiNE AI. The next payment date is {{due}}.`
+      * `You have purchased notes9 AI. The next payment date is {{due}}.`
       */
     ["com.affine.payment.ai.billing-tip.next-bill-at"](options: {
         readonly due: string;
@@ -3414,15 +3414,15 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.payment.ai.pricing-plan.caption-free"](): string;
     /**
-      * `You have purchased AFFiNE AI`
+      * `You have purchased notes9 AI`
       */
     ["com.affine.payment.ai.pricing-plan.caption-purchased"](): string;
     /**
-      * `Learn about AFFiNE AI`
+      * `Learn about notes9 AI`
       */
     ["com.affine.payment.ai.pricing-plan.learn"](): string;
     /**
-      * `AFFiNE AI`
+      * `notes9 AI`
       */
     ["com.affine.payment.ai.pricing-plan.title"](): string;
     /**
@@ -3438,11 +3438,11 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.payment.ai.subscribe.billed-annually"](): string;
     /**
-      * `You have purchased AFFiNE AI.`
+      * `You have purchased notes9 AI.`
       */
     ["com.affine.payment.ai.usage-description-purchased"](): string;
     /**
-      * `AFFiNE AI usage`
+      * `notes9 AI usage`
       */
     ["com.affine.payment.ai.usage-title"](): string;
     /**
@@ -3513,7 +3513,7 @@ export function useAFFiNEI18N(): {
         readonly capacity: string;
     }): string;
     /**
-      * `AFFiNE AI`
+      * `notes9 AI`
       */
     ["com.affine.payment.billing-setting.ai-plan"](): string;
     /**
@@ -3529,7 +3529,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.payment.billing-setting.believer.price-caption"](): string;
     /**
-      * `AFFiNE Cloud`
+      * `notes9 Cloud`
       */
     ["com.affine.payment.billing-setting.believer.title"](): string;
     /**
@@ -3545,7 +3545,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.payment.billing-setting.change-plan"](): string;
     /**
-      * `AFFiNE Cloud`
+      * `notes9 Cloud`
       */
     ["com.affine.payment.billing-setting.current-plan"](): string;
     /**
@@ -3639,7 +3639,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.payment.billing-setting.year"](): string;
     /**
-      * `Please tell us more about your use case, to make AFFiNE better.`
+      * `Please tell us more about your use case, to make notes9 better.`
       */
     ["com.affine.payment.billing-type-form.description"](): string;
     /**
@@ -3755,7 +3755,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.payment.cloud.pro.benefit.g1"](): string;
     /**
-      * `Everything in AFFiNE FOSS & Basic.`
+      * `Everything in notes9 FOSS & Basic.`
       */
     ["com.affine.payment.cloud.pro.benefit.g1-1"](): string;
     /**
@@ -3813,7 +3813,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.payment.cloud.team-workspace.benefit.g1"](): string;
     /**
-      * `Everything in AFFiNE Pro.`
+      * `Everything in notes9 Pro.`
       */
     ["com.affine.payment.cloud.team-workspace.benefit.g1-1"](): string;
     /**
@@ -3877,7 +3877,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.payment.downgrade"](): string;
     /**
-      * `We'd like to hear more about where we fall short, so that we can make AFFiNE better.`
+      * `We'd like to hear more about where we fall short, so that we can make notes9 better.`
       */
     ["com.affine.payment.downgraded-notify.content"](): string;
     /**
@@ -3921,7 +3921,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.payment.dynamic-benefit-5"](): string;
     /**
-      * `Everything in AFFiNE Pro`
+      * `Everything in notes9 Pro`
       */
     ["com.affine.payment.lifetime.benefit-1"](): string;
     /**
@@ -3966,7 +3966,7 @@ export function useAFFiNEI18N(): {
         quota: string;
     }>): string;
     /**
-      * `Upgrade to AFFiNE Pro for expanded member capacity`
+      * `Upgrade to notes9 Pro for expanded member capacity`
       */
     ["com.affine.payment.member-limit.description.tips-for-free-plan"](): string;
     /**
@@ -4280,11 +4280,11 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.payment.modal.downgrade.cancel"](): string;
     /**
-      * `You can still use AFFiNE Cloud Pro until the end of this billing period :)`
+      * `You can still use notes9 Cloud Pro until the end of this billing period :)`
       */
     ["com.affine.payment.modal.downgrade.caption"](): string;
     /**
-      * `Keep AFFiNE Cloud Pro`
+      * `Keep notes9 Cloud Pro`
       */
     ["com.affine.payment.modal.downgrade.confirm"](): string;
     /**
@@ -4382,7 +4382,7 @@ export function useAFFiNEI18N(): {
         readonly plan: string;
     }): string;
     /**
-      * `This is the pricing plans of AFFiNE Cloud. You can sign up or sign in to your account first.`
+      * `This is the pricing plans of notes9 Cloud. You can sign up or sign in to your account first.`
       */
     ["com.affine.payment.subtitle-not-signed-in"](): string;
     /**
@@ -4416,7 +4416,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.payment.redeem-code"](): string;
     /**
-      * `We'd like to hear more about your use case, so that we can make AFFiNE better.`
+      * `We'd like to hear more about your use case, so that we can make notes9 better.`
       */
     ["com.affine.payment.upgrade-success-notify.content"](): string;
     /**
@@ -4452,7 +4452,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.payment.license-success.title"](): string;
     /**
-      * `Thank you for purchasing the AFFiNE self-hosted license.`
+      * `Thank you for purchasing the notes9 self-hosted license.`
       */
     ["com.affine.payment.license-success.text-1"](): string;
     /**
@@ -4460,7 +4460,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.payment.license-success.hint"](): string;
     /**
-      * `Open AFFiNE`
+      * `Open notes9`
       */
     ["com.affine.payment.license-success.open-affine"](): string;
     /**
@@ -4892,7 +4892,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.setting.account.message"](): string;
     /**
-      * `Sync with AFFiNE Cloud`
+      * `Sync with notes9 Cloud`
       */
     ["com.affine.setting.sign.message"](): string;
     /**
@@ -4944,7 +4944,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.setting.appearance.links"](): string;
     /**
-      * `Open AFFiNE links`
+      * `Open notes9 links`
       */
     ["com.affine.setting.appearance.open-in-app"](): string;
     /**
@@ -4964,11 +4964,11 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.setting.appearance.open-in-app.open-in-web"](): string;
     /**
-      * `Open AFFiNE links`
+      * `Open notes9 links`
       */
     ["com.affine.setting.appearance.open-in-app.title"](): string;
     /**
-      * `Open this doc in AFFiNE app`
+      * `Open this doc in notes9 app`
       */
     ["com.affine.open-in-app.card.title"](): string;
     /**
@@ -5252,7 +5252,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.settings.editorSettings.general"](): string;
     /**
-      * `Enable the powerful AI assistant, AFFiNE AI.`
+      * `Enable the powerful AI assistant, notes9 AI.`
       */
     ["com.affine.settings.editorSettings.general.ai.description"](): string;
     /**
@@ -5280,7 +5280,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.settings.editorSettings.general.ai.enable.title"](): string;
     /**
-      * `AFFiNE AI`
+      * `notes9 AI`
       */
     ["com.affine.settings.editorSettings.general.ai.title"](): string;
     /**
@@ -5452,7 +5452,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.settings.email.action.verify"](): string;
     /**
-      * `Enable AFFiNE Cloud to collaborate with others`
+      * `Enable notes9 Cloud to collaborate with others`
       */
     ["com.affine.settings.member-tooltip"](): string;
     /**
@@ -5921,7 +5921,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.settings.workspace.experimental-features.enable-meetings.name"](): string;
     /**
-      * `Meetings allows you to record and transcribe meetings. Don't forget to enable it in AFFiNE settings.`
+      * `Meetings allows you to record and transcribe meetings. Don't forget to enable it in notes9 settings.`
       */
     ["com.affine.settings.workspace.experimental-features.enable-meetings.description"](): string;
     /**
@@ -6175,7 +6175,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.settings.workspace.state.local"](): string;
     /**
-      * `Sync with AFFiNE Cloud`
+      * `Sync with notes9 Cloud`
       */
     ["com.affine.settings.workspace.state.sync-affine-cloud"](): string;
     /**
@@ -6251,7 +6251,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.settings.workspace.storage.subtitle"](): string;
     /**
-      * `Enable AFFiNE Cloud to publish this workspace`
+      * `Enable notes9 Cloud to publish this workspace`
       */
     ["com.affine.settings.workspace.publish-tooltip"](): string;
     /**
@@ -6267,15 +6267,15 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.settings.workspace.sharing.url-preview.title"](): string;
     /**
-      * `AFFiNE AI`
+      * `notes9 AI`
       */
     ["com.affine.settings.workspace.affine-ai.title"](): string;
     /**
-      * `Allow AFFiNE AI Assistant`
+      * `Allow notes9 AI Assistant`
       */
     ["com.affine.settings.workspace.affine-ai.label"](): string;
     /**
-      * `Allow workspace members to use AFFiNE AI features. This setting doesn't affect billing. Workspace members use AFFiNE AI through their personal accounts.`
+      * `Allow workspace members to use notes9 AI features. This setting doesn't affect billing. Workspace members use notes9 AI through their personal accounts.`
       */
     ["com.affine.settings.workspace.affine-ai.description"](): string;
     /**
@@ -6326,7 +6326,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.settings.workspace.indexer-embedding.title"](): string;
     /**
-      * `Manage AFFiNE indexing and AFFiNE AI Embedding for local content processing`
+      * `Manage AFFiNE indexing and notes9 AI Embedding for local content processing`
       */
     ["com.affine.settings.workspace.indexer-embedding.description"](): string;
     /**
@@ -6414,7 +6414,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.settings.workspace.indexer-embedding.embedding.additional-attachments.remove-attachment.tooltip"](): string;
     /**
-      * `Sharing doc requires AFFiNE Cloud.`
+      * `Sharing doc requires notes9 Cloud.`
       */
     ["com.affine.share-menu.EnableCloudDescription"](): string;
     /**
@@ -6679,7 +6679,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.share-page.footer.create-with"](): string;
     /**
-      * `Empower your sharing with AFFiNE Cloud: One-click doc sharing`
+      * `Empower your sharing with notes9 Cloud: One-click doc sharing`
       */
     ["com.affine.share-page.footer.description"](): string;
     /**
@@ -6763,7 +6763,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.storage.plan"](): string;
     /**
-      * `AFFiNE Cloud storage`
+      * `notes9 Cloud storage`
       */
     ["com.affine.storage.title"](): string;
     /**
@@ -7091,7 +7091,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.workspace.cloud.auth"](): string;
     /**
-      * `Sync with AFFiNE Cloud`
+      * `Sync with notes9 Cloud`
       */
     ["com.affine.workspace.cloud.description"](): string;
     /**
@@ -7905,11 +7905,11 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.integration.web-clipper.name"](): string;
     /**
-      * `Import web pages to AFFiNE`
+      * `Import web pages to notes9`
       */
     ["com.affine.integration.web-clipper.desc"](): string;
     /**
-      * `Elevate your AFFiNE experience with diverse add-ons and seamless integrations.`
+      * `Elevate your notes9 experience with diverse add-ons and seamless integrations.`
       */
     ["com.affine.integration.setting.description"](): string;
     /**
@@ -7921,7 +7921,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.integration.readwise.name"](): string;
     /**
-      * `Manually import your content to AFFiNE from Readwise`
+      * `Manually import your content to notes9 from Readwise`
       */
     ["com.affine.integration.readwise.desc"](): string;
     /**
@@ -7961,7 +7961,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.integration.readwise.disconnect.title"](): string;
     /**
-      * `Once disconnected, content will no longer be imported. Do you want to keep your existing highlights in AFFiNE?`
+      * `Once disconnected, content will no longer be imported. Do you want to keep your existing highlights in notes9?`
       */
     ["com.affine.integration.readwise.disconnect.desc"](): string;
     /**
@@ -8035,11 +8035,11 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.integration.readwise.setting.caption"](): string;
     /**
-      * `New Readwise highlights will be imported to AFFiNE `
+      * `New Readwise highlights will be imported to notes9 `
       */
     ["com.affine.integration.readwise.setting.sync-new-name"](): string;
     /**
-      * `New highlights in Readwise will be synced to AFFiNE `
+      * `New highlights in Readwise will be synced to notes9 `
       */
     ["com.affine.integration.readwise.setting.sync-new-desc"](): string;
     /**
@@ -8115,7 +8115,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.integration.calendar.name"](): string;
     /**
-      * `New events will be scheduled in AFFiNE’s journal`
+      * `New events will be scheduled in notes9’s journal`
       */
     ["com.affine.integration.calendar.desc"](): string;
     /**
@@ -8159,7 +8159,7 @@ export function useAFFiNEI18N(): {
       */
     ["com.affine.integration.calendar.show-events"](): string;
     /**
-      * `Enabling this setting allows you to connect your calendar events to your Journal in AFFiNE`
+      * `Enabling this setting allows you to connect your calendar events to your Journal in notes9`
       */
     ["com.affine.integration.calendar.show-events-desc"](): string;
     /**
@@ -9008,7 +9008,7 @@ function createComponent(i18nKey: string) {
 }
 export const TypedTrans: {
     /**
-      * `Go to <a>{{link}}</a> for learn more details about AFFiNE AI.`
+      * `Go to <a>{{link}}</a> for learn more details about notes9 AI.`
       */
     ["com.affine.ai-onboarding.general.5.description"]: ComponentType<TypedTransProps<{
         readonly link: string;
@@ -9022,13 +9022,13 @@ export const TypedTrans: {
         a: JSX.Element;
     }>>;
     /**
-      * `Opening <1>AFFiNE</1> app now`
+      * `Opening <1>notes9</1> app now`
       */
     ["com.affine.auth.open.affine.prompt"]: ComponentType<TypedTransProps<Readonly<{}>, {
         ["1"]: JSX.Element;
     }>>;
     /**
-      * `This doc is now opened in <1>AFFiNE</1> app`
+      * `This doc is now opened in <1>notes9</1> app`
       */
     ["com.affine.auth.open.affine.open-doc-prompt"]: ComponentType<TypedTransProps<Readonly<{}>, {
         ["1"]: JSX.Element;
@@ -9054,14 +9054,14 @@ export const TypedTrans: {
         ["1"]: JSX.Element;
     }>>;
     /**
-      * `By clicking “Continue with Google/Email” above, you acknowledge that you agree to AFFiNE's <1>Terms of Conditions</1> and <3>Privacy Policy</3>.`
+      * `By clicking “Continue with Google/Email” above, you acknowledge that you agree to notes9's <1>Terms of Conditions</1> and <3>Privacy Policy</3>.`
       */
     ["com.affine.auth.sign.message"]: ComponentType<TypedTransProps<Readonly<{}>, {
         ["1"]: JSX.Element;
         ["3"]: JSX.Element;
     }>>;
     /**
-      * `This demo is limited. <1>Download the AFFiNE Client</1> for the latest features and Performance.`
+      * `This demo is limited. <1>Download the notes9 Client</1> for the latest features and Performance.`
       */
     ["com.affine.banner.content"]: ComponentType<TypedTransProps<Readonly<{}>, {
         ["1"]: JSX.Element;
@@ -9603,7 +9603,7 @@ export const TypedTrans: {
         ["3"]: JSX.Element;
     }>>;
     /**
-      * `Import your Readwise highlights to AFFiNE. Please visit Readwise, <br />click <a>"Get Access Token"</a>, and paste the token below.`
+      * `Import your Readwise highlights to notes9. Please visit Readwise, <br />click <a>"Get Access Token"</a>, and paste the token below.`
       */
     ["com.affine.integration.readwise.connect.desc"]: ComponentType<TypedTransProps<Readonly<{}>, {
         br: JSX.Element;

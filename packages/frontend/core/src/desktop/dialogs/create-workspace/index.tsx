@@ -44,7 +44,7 @@ export const CreateWorkspaceDialog = ({
 
   const [workspaceName, setWorkspaceName] = useState('');
   const [inputServerId, setInputServerId] = useState(
-    serverId ?? 'affine-cloud'
+    serverId ?? 'local-server'
   );
 
   const serversService = useService(ServersService);
@@ -140,7 +140,7 @@ const CustomConfirmButton = ({
     if (loading) return;
     setLoading(true);
     track.$.$.$.createWorkspace({
-      flavour: !server ? 'local' : 'affine-cloud',
+      flavour: !server ? 'local' : server.id,
     });
 
     // this will be the last step for web for now

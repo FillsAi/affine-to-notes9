@@ -281,12 +281,12 @@ export const SelectorMenu = ({ onClose }: { onClose?: () => void }) => {
   const { jumpToPage } = useNavigateHelper();
 
   const servers = useLiveData(serversService.servers$);
-  const affineCloudServer = useMemo(
-    () => servers.find(s => s.id === 'affine-cloud') as Server,
+  const localServer = useMemo(
+    () => servers.find(s => s.id === 'local-server') as Server,
     [servers]
   );
   const selfhostServers = useMemo(
-    () => servers.filter(s => s.id !== 'affine-cloud'),
+    () => servers.filter(s => s.id !== 'local-server'),
     [servers]
   );
 
@@ -328,15 +328,12 @@ export const SelectorMenu = ({ onClose }: { onClose?: () => void }) => {
       </header>
       <div className={styles.divider} />
       <main className={styles.body}>
-        {/* 1. affine-cloud  */}
-        <FrameworkScope
-          key={affineCloudServer.id}
-          scope={affineCloudServer.scope}
-        >
+        {/* 1. local-server  */}
+        <FrameworkScope key={localServer.id} scope={localServer.scope}>
           <CloudWorkSpaceList
-            server={affineCloudServer}
+            server={localServer}
             workspaces={cloudWorkspaces.filter(
-              ({ flavour }) => flavour === affineCloudServer.id
+              ({ flavour }) => flavour === localServer.id
             )}
             onClickWorkspace={handleClickWorkspace}
           />
