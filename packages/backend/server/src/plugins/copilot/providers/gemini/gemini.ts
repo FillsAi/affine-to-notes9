@@ -37,11 +37,6 @@ import {
 
 export const DEFAULT_DIMENSIONS = 256;
 
-export type GeminiConfig = {
-  apiKey: string;
-  baseUrl?: string;
-};
-
 export abstract class GeminiProvider<T> extends CopilotProvider<T> {
   private readonly MAX_STEPS = 20;
 
@@ -255,8 +250,7 @@ export abstract class GeminiProvider<T> extends CopilotProvider<T> {
       );
 
       return embeddings
-        .map(e => (e.status === 'fulfilled' ? e.value.embeddings : null))
-        .flat()
+        .flatMap(e => (e.status === 'fulfilled' ? e.value.embeddings : null))
         .filter((v): v is number[] => !!v && Array.isArray(v));
     } catch (e: any) {
       metrics.ai

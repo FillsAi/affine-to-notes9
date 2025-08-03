@@ -160,6 +160,7 @@ private extension ChatManager {
     viewModelId: UUID
   ) {
     assert(!Thread.isMainThread)
+    print("[+] starting copilot response for session: \(sessionId)")
 
     let messageParameters: [String: AnyHashable] = [
       // packages/frontend/core/src/blocksuite/ai/provider/setup-provider.tsx
@@ -167,8 +168,12 @@ private extension ChatManager {
       "files": [String](), // attachment in context, keep nil for now
       "searchMode": editorData.isSearchEnabled ? "MUST" : "AUTO",
     ]
-    let attachmentFieldName = "options.blobs"
-    var uploadableAttachments: [GraphQLFile] = [
+    let attachmentCount = [
+      editorData.fileAttachments.count,
+      editorData.documentAttachments.count,
+    ].reduce(0, +)
+    let attachmentFieldName = attachmentCount > 1 && attachmentCount != 0 ? "options.blobs" : "options.blob"
+    let uploadableAttachments: [GraphQLFile] = [
       editorData.fileAttachments.map { file -> GraphQLFile in
         .init(fieldName: attachmentFieldName, originalName: file.name, data: file.data ?? .init())
       },
@@ -177,15 +182,10 @@ private extension ChatManager {
       },
     ].flatMap(\.self)
     assert(uploadableAttachments.allSatisfy { !($0.data?.isEmpty ?? true) })
-    // in Apollo, filed name is handled as attached object to field when there is only one attachment
-    // to use array on our server, we need to append a dummy attachment
-    // which is ignored if data is empty and name is empty
-    if uploadableAttachments.count == 1 {
-      uploadableAttachments.append(.init(fieldName: attachmentFieldName, originalName: "", data: .init()))
-    }
     guard let input = try? CreateChatMessageInput(
       attachments: [],
-      blobs: .some([]), // must have the placeholder
+      blob: .none,
+      blobs: attachmentCount > 1 && attachmentCount != 0 ? .some([]) : .none,
       content: .some(contextSnippet.isEmpty ? editorData.text : "\(contextSnippet)\n\(editorData.text)"),
       params: .some(AffineGraphQL.JSON(_jsonValue: messageParameters)),
       sessionId: sessionId
@@ -196,11 +196,13 @@ private extension ChatManager {
     }
     let mutation = CreateCopilotMessageMutation(options: input)
     QLService.shared.client.upload(operation: mutation, files: uploadableAttachments) { result in
+      print("[*] createCopilotMessage result: \(result)")
       DispatchQueue.main.async {
         switch result {
         case let .success(graphQLResult):
           guard let messageIdentifier = graphQLResult.data?.createCopilotMessage else {
             self.report(sessionId, ChatError.invalidResponse)
+            self.delete(sessionId: sessionId, vmId: viewModelId)
             return
           }
           self.startStreamingResponse(
@@ -218,6 +220,7 @@ private extension ChatManager {
 
 private extension ChatManager {
   func startStreamingResponse(sessionId: String, messageId: String, applyingTo vmId: UUID) {
+    print("[+] starting streaming response for session: \(sessionId), message: \(messageId)")
     let base = IntelligentContext.shared.webViewMetadata[.currentServerBaseUrl] as? String
     guard let base, let url = URL(string: base) else {
       report(sessionId, ChatError.invalidServerConfiguration)
@@ -281,7 +284,7 @@ private extension ChatManager {
     vmId: UUID
   ) {
     let result = MarkdownParser().parse(document)
-    let content = MarkdownTextView.PreprocessContent(parserResult: result, theme: .default)
+    let content = MarkdownTextView.PreprocessedContent(parserResult: result, theme: .default)
 
     with(sessionId: sessionId, vmId: vmId) { (viewModel: inout AssistantMessageCellViewModel) in
       viewModel.content = document

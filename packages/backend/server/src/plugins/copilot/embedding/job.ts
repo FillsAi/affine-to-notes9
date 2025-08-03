@@ -12,6 +12,7 @@ import {
   OnJob,
 } from '../../../base';
 import { DocReader } from '../../../core/doc';
+import { WorkspaceBlobStorage } from '../../../core/storage';
 import { readAllDocIdsFromWorkspaceSnapshot } from '../../../core/utils/blocksuite';
 import { Models } from '../../../models';
 import { CopilotStorage } from '../storage';
@@ -65,15 +66,14 @@ export class CopilotEmbeddingJob {
   async addFileEmbeddingQueue(file: Jobs['copilot.embedding.files']) {
     if (!this.supportEmbedding) return;
 
-    const { userId, workspaceId, contextId, blobId, fileId, fileName } = file;
-    await this.queue.add('copilot.embedding.files', {
-      userId,
-      workspaceId,
-      contextId,
-      blobId,
-      fileId,
-      fileName,
-    });
+    await this.queue.add('copilot.embedding.files', file);
+  }
+
+  @CallMetric('ai', 'addBlobEmbeddingQueue')
+  async addBlobEmbeddingQueue(blob: Jobs['copilot.embedding.blobs']) {
+    if (!this.supportEmbedding) return;
+
+    await this.queue.add('copilot.embedding.blobs', blob);
   }
 
   @OnEvent('workspace.doc.embedding')
@@ -225,6 +225,20 @@ export class CopilotEmbeddingJob {
     return new File([buffer], fileName);
   }
 
+  private async readWorkspaceBlob(
+    workspaceId: string,
+    blobId: string,
+    fileName: string
+  ) {
+    const workspaceStorage = this.moduleRef.get(WorkspaceBlobStorage, {
+      strict: false,
+    });
+    const { body } = await workspaceStorage.get(workspaceId, blobId);
+    if (!body) throw new BlobNotFound({ spaceId: workspaceId, blobId });
+    const buffer = await readStream(body);
+    return new File([buffer], fileName);
+  }
+
   @OnJob('copilot.embedding.files')
   async embedPendingFile({
     userId,
@@ -284,6 +298,49 @@ export class CopilotEmbeddingJob {
       }
 
       // passthrough error to job queue
+      throw error;
+    }
+  }
+
+  @OnJob('copilot.embedding.blobs')
+  async embedPendingBlob({
+    workspaceId,
+    contextId,
+    blobId,
+  }: Jobs['copilot.embedding.blobs']) {
+    if (!this.supportEmbedding || !this.embeddingClient) return;
+
+    try {
+      const file = await this.readWorkspaceBlob(workspaceId, blobId, 'blob');
+
+      const chunks = await this.embeddingClient.getFileChunks(file);
+      const total = chunks.reduce((acc, c) => acc + c.length, 0);
+
+      for (const chunk of chunks) {
+        const embeddings = await this.embeddingClient.generateEmbeddings(chunk);
+        await this.models.copilotWorkspace.insertBlobEmbeddings(
+          workspaceId,
+          blobId,
+          embeddings
+        );
+      }
+
+      if (contextId) {
+        this.event.emit('workspace.blob.embed.finished', {
+          contextId,
+          blobId,
+          chunkSize: total,
+        });
+      }
+    } catch (error: any) {
+      if (contextId) {
+        this.event.emit('workspace.blob.embed.failed', {
+          contextId,
+          blobId,
+          error: mapAnyError(error).message,
+        });
+      }
+
       throw error;
     }
   }
@@ -465,7 +522,7 @@ export class CopilotEmbeddingJob {
 
     const docIdsInWorkspace = readAllDocIdsFromWorkspaceSnapshot(snapshot.blob);
     const docIdsInEmbedding =
-      await this.models.copilotContext.listWorkspaceEmbedding(workspaceId);
+      await this.models.copilotContext.listWorkspaceDocEmbedding(workspaceId);
     const docIdsInWorkspaceSet = new Set(docIdsInWorkspace);
 
     const deletedDocIds = docIdsInEmbedding.filter(

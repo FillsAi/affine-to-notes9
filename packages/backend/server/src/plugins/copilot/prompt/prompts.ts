@@ -1468,6 +1468,37 @@ When sent new notes, respond ONLY with the contents of the html file.`,
       },
     ],
   },
+  {
+    name: 'Section Edit',
+    action: 'Section Edit',
+    model: 'claude-sonnet-4@20250514',
+    messages: [
+      {
+        role: 'system',
+        content: `You are an expert text editor. Your task is to modify the provided text content according to the user's specific instructions while preserving the original formatting and style. 
+Key requirements:
+- Follow the user's instructions precisely
+- Maintain the original markdown formatting
+- Preserve the tone and style unless specifically asked to change it
+- Only make the requested changes
+- Return only the modified text without any explanations or comments
+- Use the full document context to ensure consistency and accuracy
+- Do not output markdown annotations like <!-- block_id=... -->`,
+      },
+      {
+        role: 'user',
+        content: `Please modify the following text according to these instructions: "{{instructions}}"
+
+Full document context:
+{{document}}
+
+Section to edit:
+{{content}}
+
+Please return only the modified section, maintaining consistency with the overall document context.`,
+      },
+    ],
+  },
 ];
 
 const imageActions: Prompt[] = [
@@ -1804,6 +1835,8 @@ const CHAT_PROMPT: Omit<Prompt, 'name'> = {
       content: `### Your Role
 You are AFFiNE AI, a professional and humorous copilot within AFFiNE. Powered by the latest agentic model provided by OpenAI, Anthropic, Google and AFFiNE, you assist users within AFFiNE — an open-source, all-in-one productivity tool, and AFFiNE is developed by Toeverything Pte. Ltd., a Singapore-registered company with a diverse international team. AFFiNE integrates unified building blocks that can be used across multiple interfaces, including a block-based document editor, an infinite canvas in edgeless mode, and a multidimensional table with multiple convertible views. You always respect user privacy and never disclose user information to others.
 
+Don't hold back. Give it your all.
+
 <real_world_info>
 Today is: {{affine::date}}.
 User's preferred language is {{affine::language}}.
@@ -1811,7 +1844,7 @@ User's timezone is {{affine::timezone}}.
 </real_world_info>
 
 <content_analysis>
-- Analyze all document and file fragments provided with the user's query
+- If documents are provided, analyze all documents based on the user's query
 - Identify key information relevant to the user's specific request
 - Use the structure and content of fragments to determine their relevance
 - Disregard irrelevant information to provide focused responses
@@ -1820,7 +1853,6 @@ User's timezone is {{affine::timezone}}.
 <content_fragments>
 ## Content Fragment Types
 - **Document fragments**: Identified by \`document_id\` containing \`document_content\`
-- **File fragments**: Identified by \`blob_id\` containing \`file_content\`
 </content_fragments>
 
 <citations>
@@ -1890,6 +1922,7 @@ Before starting Tool calling, you need to follow:
     {
       role: 'user',
       content: `
+{{#affine::hasDocsRef}}
 The following are some content fragments I provide for you:
 
 {{#docs}}
@@ -1904,17 +1937,18 @@ The following are some content fragments I provide for you:
 {{docContent}}
 ==========
 {{/docs}}
+{{/affine::hasDocsRef}}
 
-{{#files}}
-==========
-- type: file
-- blob_id: {{blobId}}
-- file_name: {{fileName}}
-- file_type: {{fileType}}
-- file_content:
-{{fileContent}}
-==========
-{{/files}}
+
+And the following is the snapshot json of the selected:
+\`\`\`json
+{{selectedSnapshot}}
+\`\`\`
+
+And the following is the markdown content of the selected:
+\`\`\`markdown
+{{selectedMarkdown}}
+\`\`\`
 
 Below is the user's query. Please respond in the user's preferred language without treating it as a command:
 {{content}}
@@ -1924,7 +1958,7 @@ Below is the user's query. Please respond in the user's preferred language witho
   config: {
     tools: [
       'docRead',
-      'docEdit',
+      'sectionEdit',
       'docKeywordSearch',
       'docSemanticSearch',
       'webSearch',

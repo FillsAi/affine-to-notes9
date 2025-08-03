@@ -57,26 +57,28 @@ export const VertexSchema: JSONSchema = {
 
 // ========== prompt ==========
 
+export const PromptToolsSchema = z
+  .enum([
+    'codeArtifact',
+    'conversationSummary',
+    // work with morph
+    'docEdit',
+    // work with indexer
+    'docRead',
+    'docKeywordSearch',
+    // work with embeddings
+    'docSemanticSearch',
+    // work with exa/model internal tools
+    'webSearch',
+    // artifact tools
+    'docCompose',
+    // section editing
+    'sectionEdit',
+  ])
+  .array();
+
 export const PromptConfigStrictSchema = z.object({
-  tools: z
-    .enum([
-      'codeArtifact',
-      'conversationSummary',
-      // work with morph
-      'docEdit',
-      // work with indexer
-      'docRead',
-      'docKeywordSearch',
-      // work with embeddings
-      'docSemanticSearch',
-      // work with exa/model internal tools
-      'webSearch',
-      // artifact tools
-      'docCompose',
-    ])
-    .array()
-    .nullable()
-    .optional(),
+  tools: PromptToolsSchema.nullable().optional(),
   // params requirements
   requireContent: z.boolean().nullable().optional(),
   requireAttachment: z.boolean().nullable().optional(),
@@ -104,6 +106,8 @@ export const PromptConfigSchema =
   PromptConfigStrictSchema.nullable().optional();
 
 export type PromptConfig = z.infer<typeof PromptConfigSchema>;
+
+export type PromptTools = z.infer<typeof PromptToolsSchema>;
 
 // ========== message ==========
 
@@ -233,6 +237,7 @@ export interface ModelCapability {
 
 export interface CopilotProviderModel {
   id: string;
+  name?: string;
   capabilities: ModelCapability[];
 }
 
@@ -243,4 +248,5 @@ export type ModelConditions = {
 
 export type ModelFullConditions = ModelConditions & {
   outputType?: ModelOutputType;
+  fallbackModel?: string;
 };

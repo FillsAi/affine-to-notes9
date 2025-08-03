@@ -1,3 +1,4 @@
+import type { AIToolsConfigService } from '@affine/core/modules/ai-button';
 import type { WorkspaceDialogService } from '@affine/core/modules/dialogs';
 import type { FeatureFlagService } from '@affine/core/modules/feature-flag';
 import type { AppThemeService } from '@affine/core/modules/theme';
@@ -44,6 +45,9 @@ const DEFAULT_CHAT_CONTEXT_VALUE: ChatContextValue = {
   status: 'idle',
   error: null,
   markdown: '',
+  snapshot: null,
+  attachments: [],
+  combinedElementsMarkdown: null,
 };
 
 export class PlaygroundChat extends SignalWatcher(
@@ -172,6 +176,9 @@ export class PlaygroundChat extends SignalWatcher(
 
   @property({ attribute: false })
   accessor notificationService!: NotificationService;
+
+  @property({ attribute: false })
+  accessor aiToolsConfigService!: AIToolsConfigService;
 
   @property({ attribute: false })
   accessor addChat!: () => Promise<void>;
@@ -338,6 +345,7 @@ export class PlaygroundChat extends SignalWatcher(
         .affineFeatureFlagService=${this.affineFeatureFlagService}
         .affineThemeService=${this.affineThemeService}
         .notificationService=${this.notificationService}
+        .aiToolsConfigService=${this.aiToolsConfigService}
         .networkSearchConfig=${this.networkSearchConfig}
         .reasoningConfig=${this.reasoningConfig}
         .messages=${this.messages}
@@ -357,6 +365,7 @@ export class PlaygroundChat extends SignalWatcher(
         .docDisplayConfig=${this.docDisplayConfig}
         .searchMenuConfig=${this.searchMenuConfig}
         .notificationService=${this.notificationService}
+        .aiToolsConfigService=${this.aiToolsConfigService}
         .affineWorkspaceDialogService=${this.affineWorkspaceDialogService}
       ></ai-chat-composer>
     </div>`;

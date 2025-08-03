@@ -14,6 +14,18 @@ declare global {
       enableDocEmbedding?: boolean;
     };
 
+    'workspace.blob.embed.finished': {
+      contextId: string;
+      blobId: string;
+      chunkSize: number;
+    };
+
+    'workspace.blob.embed.failed': {
+      contextId: string;
+      blobId: string;
+      error: string;
+    };
+
     'workspace.doc.embedding': Array<{
       workspaceId: string;
       docId: string;
@@ -60,6 +72,12 @@ declare global {
       blobId: string;
       fileId: string;
       fileName: string;
+    };
+
+    'copilot.embedding.blobs': {
+      contextId?: string;
+      workspaceId: string;
+      blobId: string;
     };
 
     'copilot.embedding.cleanupTrashedDocEmbeddings': {

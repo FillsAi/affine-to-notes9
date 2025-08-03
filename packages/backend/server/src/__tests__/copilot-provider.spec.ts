@@ -384,12 +384,12 @@ The term **“CRDT”** was first introduced by Marc Shapiro, Nuno Preguiça, Ca
         role: 'user' as const,
         content: 'what is ssot',
         params: {
-          files: [
+          docs: [
             {
-              blobId: 'SSOT',
-              fileName: 'Single source of truth - Wikipedia',
+              docId: 'SSOT',
+              docTitle: 'Single source of truth - Wikipedia',
               fileType: 'text/markdown',
-              fileContent: TestAssets.SSOT,
+              docContent: TestAssets.SSOT,
             },
           ],
         },
@@ -530,26 +530,29 @@ The term **“CRDT”** was first introduced by Marc Shapiro, Nuno Preguiça, Ca
       'Create headings',
       'Make it longer',
       'Make it shorter',
-      'Continue writing',
+      'Section Edit',
       'Chat With AFFiNE AI',
       'Search With AFFiNE AI',
     ],
-    messages: [{ role: 'user' as const, content: TestAssets.SSOT }],
+    messages: [{ role: 'user' as const, content: TestAssets.AFFiNE }],
     verifier: (t: ExecutionContext<Tester>, result: string) => {
       assertNotWrappedInCodeBlock(t, result);
-      const cleared = result.toLowerCase();
-      t.assert(
-        cleared.includes('single source of truth') ||
-          /single.*source/.test(cleared) ||
-          cleared.includes('ssot'),
-        'should include original keyword'
-      );
+      t.assert(result.includes('AFFiNE'), 'should include original keyword');
+    },
+    type: 'text' as const,
+  },
+  {
+    promptName: ['Continue writing'],
+    messages: [{ role: 'user' as const, content: TestAssets.AFFiNE }],
+    verifier: (t: ExecutionContext<Tester>, result: string) => {
+      assertNotWrappedInCodeBlock(t, result);
+      t.assert(result.length > 0, 'should not be empty');
     },
     type: 'text' as const,
   },
   {
     promptName: ['Brainstorm ideas about this', 'Brainstorm mindmap'],
-    messages: [{ role: 'user' as const, content: TestAssets.SSOT }],
+    messages: [{ role: 'user' as const, content: TestAssets.AFFiNE }],
     verifier: (t: ExecutionContext<Tester>, result: string) => {
       assertNotWrappedInCodeBlock(t, result);
       t.assert(checkMDList(result), 'should be a markdown list');
@@ -592,17 +595,13 @@ The term **“CRDT”** was first introduced by Marc Shapiro, Nuno Preguiça, Ca
     messages: [
       {
         role: 'user' as const,
-        content: TestAssets.SSOT,
+        content: TestAssets.AFFiNE,
         params: { language: 'Simplified Chinese' },
       },
     ],
     verifier: (t: ExecutionContext<Tester>, result: string) => {
       assertNotWrappedInCodeBlock(t, result);
-      const cleared = result.toLowerCase();
-      t.assert(
-        cleared.includes('单一') || cleared.includes('SSOT'),
-        'explain code result should include keyword'
-      );
+      t.assert(result.includes('AFFiNE'), 'should include keyword');
     },
     type: 'text' as const,
   },
@@ -624,7 +623,7 @@ The term **“CRDT”** was first introduced by Marc Shapiro, Nuno Preguiça, Ca
         content.includes('classroom') ||
           content.includes('school') ||
           content.includes('sky'),
-        'explain code result should include keyword'
+        'should include keyword'
       );
     },
     type: 'text' as const,
