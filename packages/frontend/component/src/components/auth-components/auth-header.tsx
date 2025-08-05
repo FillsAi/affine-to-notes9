@@ -1,7 +1,7 @@
-import { Logo1Icon } from '@blocksuite/icons/rc';
 import clsx from 'clsx';
 import type { FC } from 'react';
 
+import notes9Logo from './notes9-logo.png';
 import { authHeaderWrapper } from './share.css';
 
 export const AuthHeader: FC<{
@@ -12,7 +12,12 @@ export const AuthHeader: FC<{
   return (
     <div className={clsx(authHeaderWrapper, className)}>
       <p>
-        <Logo1Icon className="logo" />
+        <img
+          src={notes9Logo}
+          alt="notes9"
+          className="logo"
+          style={{ width: '24px', height: '24px' }}
+        />
         {title}
       </p>
       <p>{subTitle}</p>

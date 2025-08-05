@@ -307,7 +307,7 @@
   "com.affine.auth.sign.email.continue": "Continue with email",
   "com.affine.auth.sign.email.error": "Invalid email",
   "com.affine.auth.sign.email.placeholder": "Enter your email address",
-  "com.affine.auth.sign.in": "Sign in",
+  "com.affine.auth.sign.in": "Sign in to notes9",
   "com.affine.auth.sign.in.sent.email.subtitle": "Confirm your email",
   "com.affine.auth.sign.add-selfhosted.title": "Self-Hosted",
   "com.affine.auth.sign.add-selfhosted": "Connect to a Self-Hosted Instance",

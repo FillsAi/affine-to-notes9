@@ -7,7 +7,7 @@ export class GlobalContext extends Entity {
   workspaceId = this.define<string>('workspaceId');
   workspaceFlavour = this.define<string>('workspaceFlavour');
 
-  serverId = this.define<string>('serverId', 'affine-cloud');
+  serverId = this.define<string>('serverId', 'local-server');
 
   /**
    * is in doc page

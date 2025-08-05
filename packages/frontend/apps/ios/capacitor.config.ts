@@ -14,11 +14,11 @@ interface AppConfig {
 
 const config: CapacitorConfig & AppConfig = {
   appId: 'app.affine.pro',
-  appName: 'AFFiNE',
+  appName: 'notes9',
   webDir: 'dist',
   affineVersion: packageJson.version,
   ios: {
-    scheme: 'AFFiNE',
+    scheme: 'notes9',
     path: '.',
     webContentsDebuggingEnabled: true,
   },

@@ -376,7 +376,7 @@ export class ChatPanel extends SignalWatcher(
         <div class="chat-loading">
           ${AffineIcon('var(--affine-icon-secondary)')}
           <div class="chat-loading-title">
-            <span> AFFiNE AI is loading history... </span>
+            <span> notes9 AI is loading history... </span>
           </div>
         </div>
       </div>`;

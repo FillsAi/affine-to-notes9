@@ -1566,7 +1566,7 @@
   "com.affine.settings.workspace.sharing.title": "分享",
   "com.affine.settings.workspace.sharing.url-preview.description": "允许 Slack 和其他社交应用程序展开 URL，即使文档仅由工作区成员访问。",
   "com.affine.settings.workspace.sharing.url-preview.title": "始终启用 URL 预览",
-  "com.affine.settings.workspace.affine-ai.title": "AFFiNE AI",
+  "com.affine.settings.workspace.affine-ai.title": "notes9 AI",
   "com.affine.settings.workspace.affine-ai.label": "启用 AFFiNE AI 助手",
   "com.affine.settings.workspace.affine-ai.description": "允许工作区成员使用 AFFiNE AI 功能。此设置不会影响计费。工作区成员通过个人帐户使用 AFFiNE AI。",
   "com.affine.settings.workspace.backup": "归档工作区",

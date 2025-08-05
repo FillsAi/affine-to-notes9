@@ -145,7 +145,7 @@ export const SignInStep = ({
     <AuthContainer>
       <AuthHeader
         title={t['com.affine.auth.sign.in']()}
-        subTitle={serverName}
+        subTitle="notes9 Research Platform"
       />
 
       <AuthContent>
