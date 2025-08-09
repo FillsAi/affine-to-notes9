@@ -652,8 +652,14 @@ export class AIChatInput extends SignalWatcher(
 
   send = async (text: string) => {
     try {
-      const { status, markdown, images, snapshot, combinedElementsMarkdown } =
-        this.chatContextValue;
+      const {
+        status,
+        markdown,
+        images,
+        snapshot,
+        combinedElementsMarkdown,
+        html,
+      } = this.chatContextValue;
 
       if (status === 'loading' || status === 'transmitting') return;
       if (!text) return;
@@ -698,9 +704,10 @@ export class AIChatInput extends SignalWatcher(
             combinedElementsMarkdown && enableSendDetailedObject
               ? combinedElementsMarkdown
               : undefined,
+          html: html || undefined,
         },
         docId: this.docId,
-        attachments: [],
+        attachments: images,
         workspaceId: this.workspaceId,
         stream: true,
         signal: abortController.signal,

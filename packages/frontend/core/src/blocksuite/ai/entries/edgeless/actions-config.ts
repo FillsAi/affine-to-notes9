@@ -51,7 +51,11 @@ import {
 import type { AIItemGroupConfig } from '../../components/ai-item/types';
 import { AIProvider } from '../../provider';
 import { getAIPanelWidget } from '../../utils/ai-widgets';
-import { mindMapToMarkdown } from '../../utils/edgeless';
+import {
+  getEdgelessCopilotWidget,
+  mindMapToMarkdown,
+} from '../../utils/edgeless';
+import { extractSelectedContent } from '../../utils/extract';
 import { canvasToBlob, randomSeed } from '../../utils/image';
 import {
   getCopilotSelectedElems,
@@ -114,11 +118,18 @@ const othersGroup: AIItemGroupConfig = {
       showWhen: () => true,
       handler: host => {
         const panel = getAIPanelWidget(host);
-        AIProvider.slots.requestOpenWithChat.next({
-          host,
-          mode: 'edgeless',
-          autoSelect: true,
-        });
+        const edgelessCopilot = getEdgelessCopilotWidget(host);
+        extractSelectedContent(host)
+          .then(context => {
+            AIProvider.slots.requestOpenWithChat.next({
+              host,
+              mode: 'edgeless',
+              autoSelect: true,
+              context,
+            });
+          })
+          .catch(console.error);
+        edgelessCopilot.hideCopilotPanel();
         panel.hide();
       },
     },
@@ -281,9 +292,31 @@ const reviewTextGroup: AIItemGroupConfig = {
   ],
 };
 
-const touchUpImageGroup: AIItemGroupConfig = {
-  name: 'touch up image',
+const generateFromTextGroup: AIItemGroupConfig = {
+  name: 'generate from text',
   items: [
+    {
+      name: 'Summarize',
+      icon: PenIcon(),
+      testId: 'action-summarize',
+      showWhen: noteBlockOrTextShowWhen,
+      handler: actionToHandler('summary', AIPenIconWithAnimation),
+    },
+    {
+      name: 'Generate headings',
+      icon: PenIcon(),
+      testId: 'action-generate-headings',
+      showWhen: noteBlockOrTextShowWhen,
+      handler: actionToHandler('createHeadings', AIPenIconWithAnimation),
+      beta: true,
+    },
+    {
+      name: 'Generate outline',
+      icon: PenIcon(),
+      testId: 'action-generate-outline',
+      showWhen: noteBlockOrTextShowWhen,
+      handler: actionToHandler('writeOutline', AIPenIconWithAnimation),
+    },
     {
       name: 'Generate an image',
       icon: ImageIcon(),
@@ -358,35 +391,6 @@ const touchUpImageGroup: AIItemGroupConfig = {
           };
         }
       ),
-    },
-  ],
-};
-
-const generateFromTextGroup: AIItemGroupConfig = {
-  name: 'generate from text',
-  items: [
-    {
-      name: 'Summarize',
-      icon: PenIcon(),
-      testId: 'action-summarize',
-      showWhen: noteBlockOrTextShowWhen,
-      handler: actionToHandler('summary', AIPenIconWithAnimation),
-    },
-    {
-      name: 'Generate headings',
-      icon: PenIcon(),
-      testId: 'action-generate-headings',
-      showWhen: noteBlockOrTextShowWhen,
-      handler: actionToHandler('createHeadings', AIPenIconWithAnimation),
-      beta: true,
-    },
-
-    {
-      name: 'Generate outline',
-      icon: PenIcon(),
-      testId: 'action-generate-outline',
-      showWhen: noteBlockOrTextShowWhen,
-      handler: actionToHandler('writeOutline', AIPenIconWithAnimation),
     },
     {
       name: 'Expand from this mind map node',
@@ -571,7 +575,6 @@ export const edgelessAIGroups: AIItemGroupConfig[] = [
   reviewCodeGroup,
   reviewImageGroup,
   editTextGroup,
-  touchUpImageGroup,
   generateFromTextGroup,
   draftFromTextGroup,
   othersGroup,

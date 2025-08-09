@@ -2,6 +2,8 @@ import { WorkspaceImpl } from '@affine/core/modules/workspace/impls/workspace';
 import { getSurfaceBlock } from '@blocksuite/affine/blocks/surface';
 import {
   DatabaseBlockModel,
+  EmbedLinkedDocModel,
+  EmbedSyncedDocModel,
   ImageBlockModel,
   NoteBlockModel,
   NoteDisplayMode,
@@ -34,6 +36,7 @@ import { Doc as YDoc } from 'yjs';
 import { getStoreManager } from '../../manager/store';
 import type { ChatContextValue } from '../components/ai-chat-content';
 import { isAttachment } from './attachment';
+import { isImage } from './image';
 import {
   getSelectedAttachments,
   getSelectedImagesAsBlobs,
@@ -63,6 +66,8 @@ async function extractEdgelessSelected(
   let snapshot: DocSnapshot | null = null;
   let markdown = '';
   const attachments: ChatContextValue['attachments'] = [];
+  const images: File[] = [];
+  const docs: ChatContextValue['docs'] = [];
 
   if (selectedElements.length) {
     const transformer = host.store.getTransformer();
@@ -103,10 +108,24 @@ async function extractEdgelessSelected(
           if (name && sourceId) {
             attachments.push({ name, sourceId });
           }
+        } else if (isImage(element)) {
+          const { sourceId } = element.props;
+          if (sourceId) {
+            const blob = await host.store.blobSync.get(sourceId);
+            if (blob) {
+              images.push(new File([blob], sourceId));
+            }
+          }
         } else if (element instanceof GfxPrimitiveElementModel) {
           needSnapshot = true;
           const props = getElementProps(element, new Map());
           surface.addElement(props);
+        } else if (
+          element instanceof EmbedSyncedDocModel ||
+          element instanceof EmbedLinkedDocModel
+        ) {
+          const docId = element.props.pageId;
+          docs.push(docId);
         }
       }
 
@@ -130,10 +149,11 @@ async function extractEdgelessSelected(
   if (!blob) return null;
 
   return {
-    images: [new File([blob], 'selected.png')],
+    images: [new File([blob], 'selected.png'), ...images],
     snapshot: snapshot ? JSON.stringify(snapshot) : null,
     combinedElementsMarkdown: markdown.length ? markdown : null,
     attachments,
+    docs,
   };
 }
 

@@ -16,10 +16,12 @@ import { IndexerService } from '../../indexer';
 import { CopilotContextService } from '../context';
 import { PromptService } from '../prompt';
 import {
+  buildBlobContentGetter,
   buildContentGetter,
   buildDocContentGetter,
   buildDocKeywordSearchGetter,
   buildDocSearchGetter,
+  createBlobReadTool,
   createCodeArtifactTool,
   createConversationSummaryTool,
   createDocComposeTool,
@@ -104,22 +106,12 @@ export abstract class CopilotProvider<C = any> {
 
     if (modelId) {
       const hasOnlineModel = this.onlineModelList.includes(modelId);
-      const hasFallbackModel = cond.fallbackModel
-        ? this.onlineModelList.includes(cond.fallbackModel)
-        : undefined;
 
       const model = this.models.find(
         m => m.id === modelId && m.capabilities.some(matcher)
       );
 
-      if (model) {
-        // return fallback model if current model is not alive
-        if (!hasOnlineModel && hasFallbackModel) {
-          // oxlint-disable-next-line typescript-eslint(no-non-null-assertion)
-          return { id: cond.fallbackModel!, capabilities: [] };
-        }
-        return model;
-      }
+      if (model) return model;
       // allow online model without capabilities check
       if (hasOnlineModel) return { id: modelId, capabilities: [] };
       return undefined;
@@ -166,6 +158,9 @@ export abstract class CopilotProvider<C = any> {
     if (options?.tools?.length) {
       this.logger.debug(`getTools: ${JSON.stringify(options.tools)}`);
       const ac = this.moduleRef.get(AccessController, { strict: false });
+      const context = this.moduleRef.get(CopilotContextService, {
+        strict: false,
+      });
       const docReader = this.moduleRef.get(DocReader, { strict: false });
       const models = this.moduleRef.get(Models, { strict: false });
       const prompt = this.moduleRef.get(PromptService, {
@@ -182,6 +177,16 @@ export abstract class CopilotProvider<C = any> {
           continue;
         }
         switch (tool) {
+          case 'blobRead': {
+            const docContext = options.session
+              ? await context.getBySessionId(options.session)
+              : null;
+            const getBlobContent = buildBlobContentGetter(ac, docContext);
+            tools.blob_read = createBlobReadTool(
+              getBlobContent.bind(null, options)
+            );
+            break;
+          }
           case 'codeArtifact': {
             tools.code_artifact = createCodeArtifactTool(prompt, this.factory);
             break;
@@ -204,9 +209,6 @@ export abstract class CopilotProvider<C = any> {
             break;
           }
           case 'docSemanticSearch': {
-            const context = this.moduleRef.get(CopilotContextService, {
-              strict: false,
-            });
             const docContext = options.session
               ? await context.getBySessionId(options.session)
               : null;

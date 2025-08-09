@@ -38,6 +38,7 @@ import type {
 } from '../components/ai-item/types';
 import { AIProvider } from '../provider';
 import { getAIPanelWidget } from '../utils/ai-widgets';
+import { getEdgelessCopilotWidget } from '../utils/get-edgeless-copilot-widget';
 import {
   AIImageIconWithAnimation,
   AIPenIconWithAnimation,
@@ -295,19 +296,6 @@ const ReviewTextAIGroup: AIItemGroupConfig = {
   ],
 };
 
-const TouchUpImageAIGroup: AIItemGroupConfig = {
-  name: 'touch up image',
-  items: [
-    {
-      name: 'Generate an image',
-      testId: 'action-generate-image',
-      icon: ImageIcon(),
-      showWhen: textBlockShowWhen,
-      handler: actionToHandler('createImage', AIImageIconWithAnimation),
-    },
-  ],
-};
-
 const GenerateFromTextAIGroup: AIItemGroupConfig = {
   name: 'generate from text',
   items: [
@@ -346,6 +334,13 @@ const GenerateFromTextAIGroup: AIItemGroupConfig = {
       icon: PenIcon(),
       showWhen: textBlockShowWhen,
       handler: actionToHandler('writeOutline', AIPenIconWithAnimation),
+    },
+    {
+      name: 'Generate an image',
+      testId: 'action-generate-image',
+      icon: ImageIcon(),
+      showWhen: textBlockShowWhen,
+      handler: actionToHandler('createImage', AIImageIconWithAnimation),
     },
     {
       name: 'Brainstorm ideas with mind map',
@@ -390,10 +385,12 @@ const OthersAIGroup: AIItemGroupConfig = {
       icon: CommentIcon(),
       handler: host => {
         const panel = getAIPanelWidget(host);
+        const edgelessCopilot = getEdgelessCopilotWidget(host);
         AIProvider.slots.requestOpenWithChat.next({
           host,
           autoSelect: true,
         });
+        edgelessCopilot.hideCopilotPanel();
         panel.hide();
       },
     },
@@ -405,7 +402,6 @@ export const pageAIGroups: AIItemGroupConfig[] = [
   ReviewCodeAIGroup,
   ReviewImageAIGroup,
   EditTextAIGroup,
-  TouchUpImageAIGroup,
   GenerateFromTextAIGroup,
   DraftFromTextAIGroup,
   OthersAIGroup,
@@ -431,7 +427,7 @@ export function buildAIImageItemGroups(): AIItemGroupConfig[] {
       ],
     },
     {
-      name: 'touch up image',
+      name: 'generate from text',
       items: [
         {
           name: 'Generate an image',
@@ -445,6 +441,11 @@ export function buildAIImageItemGroups(): AIItemGroupConfig[] {
             blockActionTrackerOptions
           ),
         },
+      ],
+    },
+    {
+      name: 'touch up image',
+      items: [
         {
           name: 'Image processing',
           testId: 'action-image-processing',

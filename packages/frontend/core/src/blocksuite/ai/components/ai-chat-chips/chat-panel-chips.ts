@@ -15,6 +15,7 @@ import type { ChatChip, DocChip, DocDisplayConfig, FileChip } from './type';
 import {
   estimateTokenCount,
   getChipKey,
+  isAttachmentChip,
   isCollectionChip,
   isDocChip,
   isFileChip,
@@ -160,6 +161,12 @@ export class ChatPanelChips extends SignalWatcher(
               .removeChip=${this.removeChip}
             ></chat-panel-file-chip>`;
           }
+          if (isAttachmentChip(chip)) {
+            return html`<chat-panel-attachment-chip
+              .chip=${chip}
+              .removeChip=${this.removeChip}
+            ></chat-panel-attachment-chip>`;
+          }
           if (isTagChip(chip)) {
             const tag = this._tags.value.find(tag => tag.id === chip.tagId);
             if (!tag) {
@@ -291,14 +298,11 @@ export class ChatPanelChips extends SignalWatcher(
           chip.tokenCount ?? estimateTokenCount(chip.markdown.value);
         return acc + tokenCount;
       }
-      if (
-        isSelectedContextChip(chip) &&
-        chip.combinedElementsMarkdown &&
-        chip.snapshot
-      ) {
+      if (isSelectedContextChip(chip)) {
         const tokenCount =
-          estimateTokenCount(chip.combinedElementsMarkdown) +
-          estimateTokenCount(JSON.stringify(chip.snapshot));
+          estimateTokenCount(chip.combinedElementsMarkdown ?? '') +
+          estimateTokenCount(chip.snapshot ?? '') +
+          estimateTokenCount(chip.html ?? '');
         return acc + tokenCount;
       }
       return acc;

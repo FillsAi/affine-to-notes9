@@ -52,6 +52,8 @@ const DEFAULT_CHAT_CONTEXT_VALUE: ChatContextValue = {
   snapshot: null,
   attachments: [],
   combinedElementsMarkdown: null,
+  docs: [],
+  html: null,
 };
 
 export class AIChatContent extends SignalWatcher(
@@ -390,12 +392,16 @@ export class AIChatContent extends SignalWatcher(
             return;
           }
           if (this.host === params.host) {
-            extractSelectedContent(params.host)
-              .then(context => {
-                if (!context) return;
-                this.updateContext(context);
-              })
-              .catch(console.error);
+            if (params.fromAnswer && params.context) {
+              this.updateContext(params.context);
+            } else {
+              extractSelectedContent(params.host)
+                .then(context => {
+                  if (!context) return;
+                  this.updateContext(context);
+                })
+                .catch(console.error);
+            }
           }
           AIProvider.slots.requestOpenWithChat.next(null);
         }

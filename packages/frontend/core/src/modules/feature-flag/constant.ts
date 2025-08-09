@@ -2,7 +2,9 @@ import type { FlagInfo } from './types';
 
 // const isNotStableBuild = BUILD_CONFIG.appBuildType !== 'stable';
 const isCanaryBuild = BUILD_CONFIG.appBuildType === 'canary';
+const isBetaBuild = BUILD_CONFIG.appBuildType === 'beta';
 const isMobile = BUILD_CONFIG.isMobileEdition;
+const isIOS = BUILD_CONFIG.isIOS;
 
 export const AFFINE_FLAGS = {
   enable_ai: {
@@ -209,8 +211,8 @@ export const AFFINE_FLAGS = {
     category: 'affine',
     displayName: 'Enable AI Button',
     description: 'Enable AI Button on mobile',
-    configurable: BUILD_CONFIG.isMobileEdition && isCanaryBuild,
-    defaultState: false,
+    configurable: isMobile && isIOS,
+    defaultState: isMobile && isIOS,
   },
   enable_turbo_renderer: {
     category: 'blocksuite',
@@ -225,8 +227,8 @@ export const AFFINE_FLAGS = {
     bsFlag: 'enable_dom_renderer',
     displayName: 'Enable DOM Renderer',
     description: 'Enable DOM renderer for graphics elements',
-    configurable: isCanaryBuild,
-    defaultState: false,
+    configurable: isCanaryBuild || isBetaBuild,
+    defaultState: isIOS,
   },
   enable_edgeless_scribbled_style: {
     category: 'blocksuite',
@@ -284,8 +286,17 @@ export const AFFINE_FLAGS = {
   enable_battery_save_mode: {
     category: 'affine',
     displayName: 'Enable Battery Save Mode (Require Restart)',
-    description: 'Enable battery save mode',
-    configurable: isCanaryBuild,
+    description:
+      'Limit indexing and other compute-intensive tasks on this device, may experience longer loading time and latency in search and other features, in exchange for quietness.',
+    configurable: true,
+    defaultState: isMobile,
+  },
+  enable_mobile_database_editing: {
+    category: 'blocksuite',
+    bsFlag: 'enable_mobile_database_editing',
+    displayName: 'Enable Mobile Database Editing',
+    description: 'Enable mobile database editing',
+    configurable: isMobile,
     defaultState: false,
   },
 } satisfies { [key in string]: FlagInfo };

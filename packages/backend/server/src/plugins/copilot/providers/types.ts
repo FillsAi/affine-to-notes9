@@ -59,6 +59,7 @@ export const VertexSchema: JSONSchema = {
 
 export const PromptToolsSchema = z
   .enum([
+    'blobRead',
     'codeArtifact',
     'conversationSummary',
     // work with morph
@@ -248,5 +249,4 @@ export type ModelConditions = {
 
 export type ModelFullConditions = ModelConditions & {
   outputType?: ModelOutputType;
-  fallbackModel?: string;
 };
