@@ -1,5 +1,4 @@
 import { Scrollable } from '@affine/component';
-import { useI18n } from '@affine/i18n';
 import { AiIcon, PropertyIcon, TodayIcon } from '@blocksuite/icons/rc';
 
 import {
