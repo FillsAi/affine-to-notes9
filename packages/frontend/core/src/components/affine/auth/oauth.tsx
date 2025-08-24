@@ -128,7 +128,7 @@ function OAuthProvider({ onContinue, provider }: OauthProviderProps) {
       prefix={icon}
       onClick={onClick}
     >
-      Continue with {provider}
+      Continue with {provider === OAuthProviderType.OIDC ? 'Auth0' : provider}
     </Button>
   );
 }

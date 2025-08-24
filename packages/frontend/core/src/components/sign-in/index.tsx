@@ -5,8 +5,6 @@ import { useState } from 'react';
 
 import { AddSelfhostedStep } from './add-selfhosted';
 import { SignInStep } from './sign-in';
-import { SignInWithEmailStep } from './sign-in-with-email';
-import { SignInWithPasswordStep } from './sign-in-with-password';
 
 export type SignInStep =
   | 'signIn'
@@ -58,15 +56,19 @@ export const SignInPanel = ({
           onAuthenticated={onAuthenticated}
         />
       ) : step === 'signInWithEmail' ? (
-        <SignInWithEmailStep
+        /* Email authentication disabled for notes9 - Auth0 only */
+        <SignInStep
           state={state}
           changeState={setState}
+          onSkip={onSkip}
           onAuthenticated={onAuthenticated}
         />
       ) : step === 'signInWithPassword' ? (
-        <SignInWithPasswordStep
+        /* Password authentication disabled for notes9 - Auth0 only */
+        <SignInStep
           state={state}
           changeState={setState}
+          onSkip={onSkip}
           onAuthenticated={onAuthenticated}
         />
       ) : step === 'addSelfhosted' ? (

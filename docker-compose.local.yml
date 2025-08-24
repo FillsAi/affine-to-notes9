@@ -45,6 +45,14 @@ services:
       - '1025:1025' # SMTP
       - '8025:8025' # Web UI
 
+  # Backend will be run separately with yarn dev for easier debugging
+  # Backend with Auth0 configuration would be:
+  # backend:
+  #   build: .
+  #   ports:
+  #     - '3010:3010'
+  #   environment: ... (see auth0.env for full config)
+
   # AI API Placeholder - replace with your notes9-api
   ai-api:
     image: alpine:latest
