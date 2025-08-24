@@ -40,7 +40,7 @@ export const Peekable =
     }
   ) =>
   (Class: C, context: ClassDecoratorContext) => {
-    if (context.kind !== 'class') {
+    if (context && context.kind !== 'class') {
       console.error('@Peekable() can only be applied to a class');
       return;
     }

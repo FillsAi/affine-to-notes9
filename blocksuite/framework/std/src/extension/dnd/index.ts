@@ -1,21 +1,40 @@
-import {
-  draggable,
-  dropTargetForElements,
-  type ElementGetFeedbackArgs,
-  monitorForElements,
-} from '@atlaskit/pragmatic-drag-and-drop/element/adapter';
-import { centerUnderPointer } from '@atlaskit/pragmatic-drag-and-drop/element/center-under-pointer';
-import { disableNativeDragPreview } from '@atlaskit/pragmatic-drag-and-drop/element/disable-native-drag-preview';
-import { pointerOutsideOfPreview } from '@atlaskit/pragmatic-drag-and-drop/element/pointer-outside-of-preview';
-import { preserveOffsetOnSource } from '@atlaskit/pragmatic-drag-and-drop/element/preserve-offset-on-source';
-import { setCustomNativeDragPreview } from '@atlaskit/pragmatic-drag-and-drop/element/set-custom-native-drag-preview';
-import type { DropTargetRecord } from '@atlaskit/pragmatic-drag-and-drop/types';
-import { autoScrollForElements } from '@atlaskit/pragmatic-drag-and-drop-auto-scroll/element';
-import {
-  attachClosestEdge,
-  type Edge,
-  extractClosestEdge,
-} from '@atlaskit/pragmatic-drag-and-drop-hitbox/closest-edge';
+// TODO: Fix ES module imports for pragmatic-drag-and-drop packages
+// Temporarily disabled due to module resolution issues
+// import {
+//   draggable,
+//   dropTargetForElements,
+//   type ElementGetFeedbackArgs,
+//   monitorForElements,
+// } from '@atlaskit/pragmatic-drag-and-drop/element/adapter';
+// import { centerUnderPointer } from '@atlaskit/pragmatic-drag-and-drop/element/center-under-pointer';
+// import { disableNativeDragPreview } from '@atlaskit/pragmatic-drag-and-drop/element/disable-native-drag-preview';
+// import { pointerOutsideOfPreview } from '@atlaskit/pragmatic-drag-and-drop/element/pointer-outside-of-preview';
+// import { preserveOffsetOnSource } from '@atlaskit/pragmatic-drag-and-drop/element/preserve-offset-on-source';
+// import { setCustomNativeDragPreview } from '@atlaskit/pragmatic-drag-and-drop/element/set-custom-native-drag-preview';
+// import type { DropTargetRecord } from '@atlaskit/pragmatic-drag-and-drop/types';
+// import { autoScrollForElements } from '@atlaskit/pragmatic-drag-and-drop-auto-scroll/element';
+// import {
+//   attachClosestEdge,
+//   type Edge,
+//   extractClosestEdge,
+// } from '@atlaskit/pragmatic-drag-and-drop-hitbox/closest-edge';
+
+// Temporary stubs - drag and drop will be disabled
+const draggable = (_options: any) => ({ destroy: () => {} });
+const dropTargetForElements = (_options: any) => ({ destroy: () => {} });
+const monitorForElements = (_options: any) => ({ destroy: () => {} });
+const centerUnderPointer = () => ({ x: 0, y: 0 });
+const disableNativeDragPreview = (_options: any) => {};
+const pointerOutsideOfPreview = (_options: any) => ({ x: '0px', y: '0px' });
+const preserveOffsetOnSource = (_options: any) => ({ x: 0, y: 0 });
+const setCustomNativeDragPreview = (_options: any) => {};
+const autoScrollForElements = (_options: any) => ({ destroy: () => {} });
+const attachClosestEdge = (data: any, _options: any) => data;
+const extractClosestEdge = (_data?: any) => null;
+
+type ElementGetFeedbackArgs = any;
+type DropTargetRecord = { dropEffect: string };
+type Edge = 'top' | 'right' | 'bottom' | 'left';
 import type { ServiceIdentifier } from '@blocksuite/global/di';
 
 import { LifeCycleWatcherIdentifier } from '../../identifier.js';

@@ -6,7 +6,7 @@ import type { ServerConfig, ServerMetadata } from './types';
 export const BUILD_IN_SERVERS: (ServerMetadata & { config: ServerConfig })[] = [
   {
     id: 'local-server',
-    baseUrl: 'http://localhost:3010', // Only local server
+    baseUrl: process.env.AFFINE_SERVER_EXTERNAL_URL || 'http://localhost:3010', // Dynamic server URL
     config: {
       serverName: 'notes9 Research Platform',
       features: [

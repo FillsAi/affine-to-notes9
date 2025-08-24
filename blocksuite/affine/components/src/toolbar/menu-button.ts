@@ -101,7 +101,7 @@ export class EditorMenuButton extends WithDisposable(LitElement) {
   }
 
   @query('editor-menu-content')
-  private accessor _content!: EditorMenuContent;
+  private accessor _content!: any; // EditorMenuContent - temporary fix for circular reference
 
   @query('editor-icon-button')
   private accessor _trigger!: EditorIconButton;

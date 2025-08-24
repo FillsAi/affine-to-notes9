@@ -134,10 +134,10 @@ const CloudWorkSpaceList = ({
   const t = useI18n();
   const globalContextService = useService(GlobalContextService);
   const globalDialogService = useService(GlobalDialogService);
-  const serverName = useLiveData(server.config$.selector(c => c.serverName));
+  const _serverName = useLiveData(server.config$.selector(c => c.serverName));
   const authService = useService(AuthService);
   const serversService = useService(ServersService);
-  const account = useLiveData(authService.session.account$);
+  const _account = useLiveData(authService.session.account$);
   const accountStatus = useLiveData(authService.session.status$);
   const navigateHelper = useNavigateHelper();
 
@@ -145,7 +145,7 @@ const CloudWorkSpaceList = ({
     globalContextService.globalContext.workspaceFlavour.$
   );
 
-  const handleDeleteServer = useCallback(() => {
+  const _handleDeleteServer = useCallback(() => {
     serversService.removeServer(server.id);
 
     if (currentWorkspaceFlavour === server.id) {
@@ -162,7 +162,7 @@ const CloudWorkSpaceList = ({
     workspaces,
   ]);
 
-  const handleSignOut = useSignOut();
+  const _handleSignOut = useSignOut();
 
   const handleSignIn = useAsyncCallback(async () => {
     globalDialogService.open('sign-in', {
@@ -172,6 +172,7 @@ const CloudWorkSpaceList = ({
 
   return (
     <>
+      {/* Commented out WorkspaceServerInfo to hide server name display
       <WorkspaceServerInfo
         server={server.id}
         name={serverName}
@@ -180,6 +181,7 @@ const CloudWorkSpaceList = ({
         onDeleteServer={handleDeleteServer}
         onSignOut={handleSignOut}
       />
+      */}
       {accountStatus === 'unauthenticated' ? (
         <MenuItem key="sign-in" onClick={handleSignIn}>
           <div className={styles.signInMenuItemContent}>

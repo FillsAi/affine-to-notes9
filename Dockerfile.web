@@ -1,0 +1,32 @@
+FROM node:20-bookworm
+
+# Install build tools
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    libc6-dev \
+    pkg-config \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Enable yarn globally
+RUN corepack enable
+
+WORKDIR /app
+
+# Copy all source code (needed for monorepo workspace resolution)
+COPY . .
+
+# Install dependencies
+RUN yarn install --immutable
+
+# Set up development environment
+ENV AFFINE_SERVER_EXTERNAL_URL=http://localhost:3010
+ENV BUILD_CONFIG.serverUrl=http://localhost:3010
+ENV BUILD_CONFIG.editorFlags='{"enable_database":true,"enable_synced_doc_block":true,"enable_edgeless_mindmap":true,"enable_block_hub":true,"enable_ai":false,"enable_emoji":true}'
+ENV NODE_ENV=development
+
+# Expose the web server port
+EXPOSE 8080
+
+# Start the development server
+CMD ["yarn", "affine", "dev", "-p", "@affine/web"]

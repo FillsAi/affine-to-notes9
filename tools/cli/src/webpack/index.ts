@@ -244,6 +244,9 @@ export function createHTMLTargetConfig(
       ...createHTMLPlugins(buildConfig, htmlConfig),
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+        'process.env.AFFINE_SERVER_EXTERNAL_URL': JSON.stringify(
+          process.env.AFFINE_SERVER_EXTERNAL_URL
+        ),
         ...Object.entries(buildConfig).reduce(
           (def, [k, v]) => {
             def[`BUILD_CONFIG.${k}`] = JSON.stringify(v);

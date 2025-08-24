@@ -75,7 +75,7 @@ export class ServerConfigResolver {
       name:
         this.config.server.name ??
         (env.selfhosted
-          ? 'AFFiNE Selfhosted Cloud'
+          ? 'notes9'
           : env.namespaces.canary
             ? 'AFFiNE Canary Cloud'
             : env.namespaces.beta
