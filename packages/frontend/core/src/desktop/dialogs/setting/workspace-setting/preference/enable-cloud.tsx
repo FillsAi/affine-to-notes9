@@ -53,12 +53,12 @@ export const EnableCloudPanel = ({
       }}
     >
       <Button
-        data-testid="publish-enable-affine-cloud-button"
+        data-testid="publish-enable-notes9-cloud-button"
         variant="primary"
         onClick={confirmEnableCloudAndClose}
         style={{ marginTop: '12px' }}
       >
-        {t['Enable AFFiNE Cloud']()}
+        {t['Enable notes9 Cloud']()}
       </Button>
     </SettingRow>
   );

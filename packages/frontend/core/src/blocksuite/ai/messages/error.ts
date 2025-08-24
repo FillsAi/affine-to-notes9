@@ -196,7 +196,7 @@ const PaymentRequiredErrorRenderer = (host?: EditorHost | null) => html`
 
 const LoginRequiredErrorRenderer = (host?: EditorHost | null) => html`
   <ai-error-wrapper
-    .text=${'You need to login to AFFiNE Cloud to continue using AFFiNE AI.'}
+    .text=${'You need to login to notes9 Cloud to continue using notes9 AI.'}
     .actionText=${'Login'}
     .onClick=${() => AIProvider.slots.requestLogin.next({ host })}
   ></ai-error-wrapper>

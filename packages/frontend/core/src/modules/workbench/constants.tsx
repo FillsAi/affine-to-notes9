@@ -2,6 +2,7 @@ import {
   AiIcon,
   AllDocsIcon,
   AttachmentIcon,
+  DatabaseTableViewIcon,
   DeleteIcon,
   EdgelessIcon,
   ExportToPdfIcon,
@@ -15,6 +16,8 @@ import type { ReactNode } from 'react';
 export const iconNameToIcon = {
   allDocs: <AllDocsIcon />,
   collection: <ViewLayersIcon />,
+  dashboard: <DatabaseTableViewIcon />,
+  lims: <ViewLayersIcon />,
   doc: <PageIcon />,
   page: <PageIcon />,
   edgeless: <EdgelessIcon />,

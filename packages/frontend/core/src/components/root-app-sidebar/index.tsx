@@ -1,7 +1,6 @@
 // Import is already correct, no changes needed
 import {
   AddPageButton,
-  AppDownloadButton,
   AppSidebar,
   MenuItem,
   MenuLinkItem,
@@ -39,6 +38,7 @@ import {
 } from '../../desktop/components/navigation-panel';
 import { WorkbenchService } from '../../modules/workbench';
 import { WorkspaceNavigator } from '../workspace-selector';
+import { AppSidebarDashboardButton } from './dashboard-button';
 import {
   bottomContainer,
   quickSearch,
@@ -48,6 +48,7 @@ import {
 } from './index.css';
 import { InviteMembersButton } from './invite-members-button';
 import { AppSidebarJournalButton } from './journal-button';
+import { AppSidebarLIMSButton } from './lims-button';
 import { NotificationButton } from './notification-button';
 import { SidebarAudioPlayer } from './sidebar-audio-player';
 import { TemplateDocEntrance } from './template-doc-entrance';
@@ -208,6 +209,8 @@ export const RootAppSidebar = memo((): ReactElement => {
           />
           <AddPageButton />
         </div>
+        <AppSidebarDashboardButton />
+        <AppSidebarLIMSButton />
         <AllDocsButton />
         <AppSidebarJournalButton />
         {sessionStatus === 'authenticated' && <NotificationButton />}
@@ -252,7 +255,11 @@ export const RootAppSidebar = memo((): ReactElement => {
       </SidebarScrollableContainer>
       <SidebarContainer className={bottomContainer}>
         <SidebarAudioPlayer />
-        {BUILD_CONFIG.isElectron ? <UpdaterButton /> : <AppDownloadButton />}
+        {
+          BUILD_CONFIG.isElectron ? (
+            <UpdaterButton />
+          ) : null /* <AppDownloadButton /> */
+        }
       </SidebarContainer>
     </AppSidebar>
   );

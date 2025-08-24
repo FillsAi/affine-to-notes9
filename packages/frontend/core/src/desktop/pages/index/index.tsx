@@ -78,7 +78,7 @@ export const Component = ({
     buildShowcaseWorkspace(
       workspacesService,
       'local-server',
-      'Local AFFiNE Server'
+      'Local notes9 Server'
     )
       .then(({ meta, defaultDocId }) => {
         if (defaultDocId) {

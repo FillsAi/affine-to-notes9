@@ -3,7 +3,7 @@ import {
   type AnthropicProviderOptions,
 } from '@ai-sdk/anthropic';
 import { type GoogleVertexAnthropicProvider } from '@ai-sdk/google-vertex/anthropic';
-import { AISDKError, generateText, stepCountIs, streamText } from 'ai';
+import { AISDKError, generateText, streamText } from 'ai';
 
 import {
   CopilotProviderSideError,
@@ -75,7 +75,6 @@ export abstract class AnthropicProvider<T> extends CopilotProvider<T> {
           anthropic: this.getAnthropicOptions(options, model.id),
         },
         tools: await this.getTools(options, model.id),
-        stopWhen: stepCountIs(this.MAX_STEPS),
       });
 
       if (!text) throw new Error('Failed to generate text');
@@ -168,7 +167,6 @@ export abstract class AnthropicProvider<T> extends CopilotProvider<T> {
         anthropic: this.getAnthropicOptions(options, model.id),
       },
       tools: await this.getTools(options, model.id),
-      stopWhen: stepCountIs(this.MAX_STEPS),
     });
     return fullStream;
   }

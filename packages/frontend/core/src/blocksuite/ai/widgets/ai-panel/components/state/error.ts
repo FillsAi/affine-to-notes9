@@ -146,7 +146,7 @@ export class AIPanelError extends WithDisposable(LitElement) {
           AIErrorType.Unauthorized,
           () =>
             html` <div class="error-info">
-                You need to login to AFFiNE Cloud to continue using AFFiNE AI.
+                You need to login to notes9 Cloud to continue using notes9 AI.
               </div>
               <div class="action-button-group">
                 <div @click=${this.config.cancel} class="action-button">

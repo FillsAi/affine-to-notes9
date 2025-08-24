@@ -365,6 +365,18 @@ const DetailPageImpl = memo(function DetailPageImpl() {
         </Scrollable.Root>
       </ViewSidebarTab>
 
+      <ViewSidebarTab tabId="ai-assistant" icon={<AiIcon />}>
+        <Scrollable.Root className={styles.sidebarScrollArea}>
+          <Scrollable.Viewport>
+            <div style={{ padding: '16px' }}>
+              <h3>AI Assistant</h3>
+              <p>AI assistant features and interactions will appear here.</p>
+            </div>
+          </Scrollable.Viewport>
+          <Scrollable.Scrollbar />
+        </Scrollable.Root>
+      </ViewSidebarTab>
+
       <ViewSidebarTab tabId="outline" icon={<TocIcon />}>
         <Scrollable.Root className={styles.sidebarScrollArea}>
           <Scrollable.Viewport>
