@@ -1,0 +1,17 @@
+version: 1.0
+runtime: docker
+build:
+  commands:
+    build:
+      - echo "Using pre-built image"
+run:
+  runtime-version: latest
+  command: yarn affine dev -p @affine/web
+  network:
+    port: 8080
+    env: PORT
+  env:
+    - name: AFFINE_SERVER_EXTERNAL_URL
+      value: http://localhost:3010
+    - name: NODE_ENV
+      value: production

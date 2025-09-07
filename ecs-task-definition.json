@@ -1,0 +1,121 @@
+{
+  "family": "notes9-app",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "2048",
+  "memory": "4096",
+  "executionRoleArn": "arn:aws:iam::557690595651:role/ecsTaskExecutionRole",
+  "taskRoleArn": "arn:aws:iam::557690595651:role/ecsTaskExecutionRole",
+  "containerDefinitions": [
+    {
+      "name": "backend",
+      "image": "557690595651.dkr.ecr.us-east-1.amazonaws.com/notes9-backend:latest",
+      "portMappings": [
+        {
+          "containerPort": 3010,
+          "protocol": "tcp"
+        }
+      ],
+      "essential": true,
+      "environment": [
+        {
+          "name": "NODE_ENV",
+          "value": "production"
+        },
+        {
+          "name": "AFFINE_ENV",
+          "value": "prod"
+        },
+        {
+          "name": "DATABASE_URL",
+          "value": "postgresql://affine:affinepassword123@notes9-db.crecqsg4qz25.us-east-1.rds.amazonaws.com:5432/affine"
+        },
+        {
+          "name": "REDIS_SERVER_HOST",
+          "value": "notes9-redis.0uxvoc.0001.use1.cache.amazonaws.com"
+        },
+        {
+          "name": "REDIS_SERVER_PORT",
+          "value": "6379"
+        },
+        {
+          "name": "AFFINE_SERVER_EXTERNAL_URL",
+          "value": "http://notes9-app-alb-1234567890.us-east-1.elb.amazonaws.com"
+        },
+        {
+          "name": "DEPLOYMENT_TYPE",
+          "value": "selfhosted"
+        },
+        {
+          "name": "AFFINE_CLIENT_VERSIONCONTROL_ENABLED",
+          "value": "false"
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/notes9-app",
+          "awslogs-region": "us-east-1",
+          "awslogs-stream-prefix": "backend",
+          "awslogs-create-group": "true"
+        }
+      },
+      "healthCheck": {
+        "command": [
+          "CMD-SHELL",
+          "curl -f http://localhost:3010/api/healthz || exit 1"
+        ],
+        "interval": 30,
+        "timeout": 5,
+        "retries": 3,
+        "startPeriod": 120
+      }
+    },
+    {
+      "name": "web",
+      "image": "557690595651.dkr.ecr.us-east-1.amazonaws.com/notes9-web:latest",
+      "portMappings": [
+        {
+          "containerPort": 8080,
+          "protocol": "tcp"
+        }
+      ],
+      "essential": true,
+      "environment": [
+        {
+          "name": "AFFINE_SERVER_EXTERNAL_URL",
+          "value": "http://notes9-app-alb-1234567890.us-east-1.elb.amazonaws.com"
+        },
+        {
+          "name": "NODE_ENV",
+          "value": "production"
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/notes9-app",
+          "awslogs-region": "us-east-1",
+          "awslogs-stream-prefix": "web",
+          "awslogs-create-group": "true"
+        }
+      },
+      "healthCheck": {
+        "command": [
+          "CMD-SHELL",
+          "curl -f http://localhost:8080 || exit 1"
+        ],
+        "interval": 30,
+        "timeout": 5,
+        "retries": 3,
+        "startPeriod": 60
+      },
+      "dependsOn": [
+        {
+          "containerName": "backend",
+          "condition": "HEALTHY"
+        }
+      ]
+    }
+  ]
+}
