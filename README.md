@@ -227,13 +227,13 @@ Thanks to [Chromatic](https://www.chromatic.com/) for providing the visual testi
 
 ## License
 
-### Editions
+This Notes9 project is licensed under the MIT License - see the [LICENSE] file for details.
 
-- AFFiNE Community Edition (CE) is the current available version, it's free for self-host under the MIT license.
+### Commercial Use
 
-- AFFiNE Enterprise Edition (EE) is yet to be published, it will have more advanced features and enterprise-oriented offerings, including but not exclusive to rebranding and SSO, advanced admin and audit, etc., you may refer to https://affine.pro/pricing for more information
-
-See [LICENSE] for details.
+- ✅ **Fully permitted** for commercial use
+- ✅ No subscription or licensing fees required
+- ✅ Enterprise Edition restrictions removed
 
 [all-contributors-badge]: https://img.shields.io/github/contributors/toeverything/AFFiNE
 [license]: ./LICENSE
