@@ -121,23 +121,18 @@ cp docker.env.example docker.env
 yarn affine @affine/server-native build
 ```
 
-### 6. Initialize Database
+### 6. ⚠️ Backend Implementation Required
 
-```bash
-yarn affine @affine/server init
-```
+**Important:** The original AFFiNE backend server has been removed due to Enterprise Edition licensing restrictions that require a paid subscription for commercial use.
 
-### 7. Start Development Servers
+**You need to implement your own backend or use an alternative:**
 
-Open two terminal windows:
+1. **Custom Node.js/Express GraphQL Server**
+2. **Supabase/Firebase Backend**
+3. **Headless CMS Solution**
+4. **Minimal API Server**
 
-**Terminal 1 (Backend):**
-
-```bash
-yarn affine @affine/server dev
-```
-
-**Terminal 2 (Frontend):**
+### 7. Start Frontend Development
 
 ```bash
 yarn affine @affine/web dev
@@ -212,8 +207,8 @@ The docker-compose setup includes an AI API placeholder. To integrate your notes
 ### Access Points
 
 - **Frontend (Web App):** http://localhost:8080
-- **Backend API:** http://localhost:3010
-- **GraphQL Playground:** http://localhost:3010/graphql
+- **Backend API:** http://localhost:3010 (⚠️ Placeholder - implement your own)
+- **GraphQL Playground:** http://localhost:3010/graphql (⚠️ Requires custom backend)
 - **Mail Service (MailHog):** http://localhost:8025
 - **AI API Placeholder:** http://localhost:8001 (replace with notes9-api)
 

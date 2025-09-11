@@ -36,8 +36,8 @@ echo ""
 echo "🔧 Next steps for development:"
 echo "1. Install dependencies: yarn install"
 echo "2. Build native packages: yarn affine @affine/server-native build"
-echo "3. Setup database: yarn affine @affine/server init"
-echo "4. Start backend: yarn affine @affine/server dev"
+echo "3. ⚠️  Backend server removed (Enterprise Edition licensing)"
+echo "4. Implement your own backend or use alternative solution"
 echo "5. Start frontend: yarn affine @affine/web dev"
 echo ""
 echo "🌐 URLs:"
@@ -61,12 +61,11 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     echo "🏗️ Building native packages..."
     yarn affine @affine/server-native build
     
-    echo "🗄️ Setting up database..."
-    yarn affine @affine/server init
+    echo "⚠️  Database setup skipped - backend server removed due to licensing"
     
     echo "✅ Setup complete!"
     echo ""
     echo "🚀 To start development:"
-    echo "Terminal 1: yarn affine @affine/server dev"
-    echo "Terminal 2: yarn affine @affine/web dev"
+    echo "⚠️  Backend server removed - implement your own backend"
+    echo "Terminal 1: yarn affine @affine/web dev"
 fi 
